@@ -1,0 +1,355 @@
+ 
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Mon portfolio</title>
+    <link rel="stylesheet" href="style/style.css"> 
+  </head>
+
+  <body>
+
+    <main id="selection" class="selection" style="opacity: 100;"> <!-- pages[0]-->
+      <div>
+          <img src="img/decoTitreHaut.png">
+          <h1>portfolio</h1>
+          <h2>by Samuel Dubiez</h2>
+          <img src="img/decoTitreBas.png">
+      </div>
+
+      <div>
+        <section onclick="changementPages(1,0)" ><img src="img/selecteur.png" class="left" alt="->"><button>Qui je suis</button><img src="img/selecteur.png" alt="<-"></section>
+        <section onclick="changementPages(2,0)"><img src="img/selecteur.png" class="left" alt="->"><button>Mon parcour</button><img src="img/selecteur.png" alt="<-"></section>
+        <section onclick="changementPages(3,0)"><img src="img/selecteur.png" class="left" alt="->"><button>Mes compétances</button><img src="img/selecteur.png" alt="<-"></section>
+        <section onclick="changementPages(4,0)"><img src="img/selecteur.png" class="left" alt="->"><button>Mes projets</button><img src="img/selecteur.png" alt="<-"></section>
+      </div>
+    </main>
+
+    <main id="qui_je_suis"  class="qui_je_suis" style="opacity: 0;"> <!-- pages[1]-->
+      <div class="titre">
+        <h2>Qui suis je</h2>
+        <div>
+          <img src="img/decoSousTitre.png">
+          <img src="img/decoSousligne.png">
+        </div>
+      </div>
+
+      <div>
+        <aside>
+          <div>
+            <img src="img/profil.jpg" alt="PP" class="pp">
+            <img src="img/cadrePhoto.png">
+          </div>
+          <ul>
+            <li><p>Samuel Dubiez</p></li>
+            <li><p>né le 24/12/2003</p></li>
+            <li><p>samueldubiez69@gmail.com</p></li>
+            <li><p>06 XX XX XX XX</p></li>
+          </ul>
+        </aside>
+
+          <img src="img/barreCoupure.png">
+
+          <p>Lorem ipsum dolor sit amet</p>
+      </div>
+
+      <div>
+        <section onclick="changementPages(0,1)" class="retour "><img src="img/selecteur.png" class="left" alt="->"><button>Retour</button><img src="img/selecteur.png" alt="<-"></section>
+      </div>
+
+    </main>
+
+    <main id="mon_parcours" class="mon_parcours" style="opacity: 0;"> <!-- pages[2]-->
+      <div class="titre">
+        <h2>Mon parcour</h2>
+        <div>
+          <img src="img/decoSousTitre.png">
+          <img src="img/decoSousligne.png">
+        </div>
+      </div>
+
+      <div>        
+        <aside>
+          <div>
+            <p>Étude supérieur</p>
+            <ul>
+              <li><p>nom : IUT2 Grenoble</p></li>
+              <li><p>ville : 38100 Grenoble</p></li>
+              <li><p>adresse : 2 PI. Doyen Gosse</p></li>
+              <li><p>année : 2022-20XX</p></li>
+              <li><p>mention : En cour</p></li>
+            </ul>
+          </div>
+          <div>
+            <p>stages / travails</p>
+            <ul>
+              <li><p>aucun</p></li>
+              <li><p>aucun</p></li>
+              <li><p>aucun</p></li>
+              <li><p>aucun</p></li>
+            </ul>
+          </div>
+
+        </aside>
+
+        <aside>
+          <div>
+            <p>Collége</p>
+            <ul>
+              <li><p>nom : Marie Laurencin</p></li>
+              <li><p>ville : 69170 Tarare</p></li>
+              <li><p>adresse : 75 Rte de Saint-Clément</p></li>
+              <li><p>année : 2015-2019</p></li>
+              <li><p>mention : Bien</p></li>
+            </ul>
+          </div>
+
+          <div>
+            <p>Lycée</p>
+            <ul>
+              <li><p>nom : Hippolyte Carnot</p></li>
+              <li><p>ville : 42300 Roanne</p></li>
+              <li><p>adresse : 35 Av. Carnot</p></li>
+              <li><p>année : 2019-2022</p></li>
+              <li><p>mention : Bien</p></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+
+      <div>
+        <section onclick="changementPages(0,2)" class="retour "><img src="img/selecteur.png" class="left" alt="->"><button>Retour</button><img src="img/selecteur.png" alt="<-"></section>
+      </div>
+    </main>
+
+    <main id="mes_competances" class="mes_competances" style="opacity: 0;"> <!-- pages[3]-->
+      <div class="titre">
+        <h2>Mes compétances</h2>
+        <div>
+          <img src="img/decoSousTitre.png">
+          <img src="img/decoSousligne.png">
+        </div>
+      </div>
+
+      <div>
+        <aside>
+          <p>java</p>
+          <img src="img/jaugeLvPlein.png">
+          <img src="img/jaugeLvPlein.png">
+          <img src="img/jaugeLvPlein.png">
+          <img src="img/jaugeLvVide.png">
+          <img src="img/jaugeLvVide.png">
+        </aside>
+        <aside>
+          <p>HTML/CSS</p>
+          <img src="img/jaugeLvPlein.png">
+          <img src="img/jaugeLvPlein.png">
+          <img src="img/jaugeLvPlein.png">
+          <img src="img/jaugeLvPlein.png">
+          <img src="img/jaugeLvVide.png">
+        </aside>
+        <aside>
+          <p>assembleur 68000</p>
+          <img src="img/jaugeLvPlein.png">
+          <img src="img/jaugeLvPlein.png">
+          <img src="img/jaugeLvPlein.png">
+          <img src="img/jaugeLvPlein.png">
+          <img src="img/jaugeLvVide.png">
+        </aside>
+        <aside><p>assidu</p> - <p>travaille d'équipe</p> - <p>créative</p></aside>
+      </div>
+
+      <div>
+        <section onclick="changementPages(0,3)" class="retour "><img src="img/selecteur.png" class="left" alt="->"><button>Retour</button><img src="img/selecteur.png" alt="<-"></section>
+      </div>
+    </main>
+
+    <main id="mes_projets" class="mes_projets" style="opacity: 0;"> <!-- pages[4]-->
+      <div class="titre">
+        <h2>Mes projets</h2>
+        <div>
+          <img src="img/decoSousTitre.png">
+          <img src="img/decoSousligne.png">
+        </div>
+      </div>
+
+      <div>
+        <section class="buttonProjet">
+          <img src="img/selecteur.png" class="left" alt="->">
+            <section class="projet" onclick="changementPages(5,4)">
+              <div>
+                <img src="img/emplacementProjet.png">
+                <div class="imgProjet">
+                  <img src="img/banner_capgemini.png" alt="imageProjet">
+                </div>
+                
+                <aside>
+                  <div>
+                    <p>presentation Capgemini</p>
+                    <p>janvier 2023</p>
+                  </div>
+                </aside>
+              </div>
+            </section>
+          <img src="img/selecteur.png" alt="<-">
+        </section> 
+          <section class="buttonProjet">
+            <img src="img/selecteur.png" class="left" alt="->">
+              <section class="projet" onclick="changementPages(6,4)">
+                <div>
+                  <img src="img/emplacementProjet.png">
+                  <div class="imgProjet">
+                    <img>
+                  </div>
+                  
+                  <aside>
+                    <div>
+                      <p>prévention accident de la route</p>
+                      <p>mai 2023</p>
+                    </div>
+                  </aside>
+                </div>
+              </section>
+            <img src="img/selecteur.png" alt="<-">
+          </section>
+          <section class="buttonProjet">
+            <img src="img/selecteur.png" class="left" alt="->">
+              <section class="projet" onclick="changementPages(7,4)">
+                <div>
+                  <img src="img/emplacementProjet.png">
+                  <div class="imgProjet">
+                    <img>
+                  </div>
+                  
+                  <aside>
+                    <div>
+                      <p>Portfolio</p>
+                      <p>En cours ...</p>
+                    </div>
+                  </aside>
+                </div>
+              </section>
+            <img src="img/selecteur.png" alt="<-">
+          </section>
+      </div>
+
+      <div>
+        <section onclick="changementPages(0,4)" class="retour "><img src="img/selecteur.png" class="left" alt="->"><button>Retour</button><img src="img/selecteur.png" alt="<-"></section>
+      </div>
+    </main>
+
+    <main id="projet_1" class="pageProjet" style="opacity: 0;"> <!-- pages[5]-->
+      <div>
+        <img src="img/cadrePresentationprojet.png" alt="cadre">
+        <div class="contenueProjet">
+          <h2>Capgemini</h2>
+          <aside>
+            <div>
+              <p>Création d'un site web présantant l'entreprise Capgemini sur différant points: qu'est-ce qu'il font?, les différants métier, qui il sont? Ce sitea été créer afin d'aider les étudiants a s'informer sur Capgemini et a se décidé pour leur stages.</p>
+              <ul>
+                <h1>Liens:</h1>
+                <li><a href="projets/capgemini/Files/acceuil.html" > - Cliquer ici pour acceder au site du projet</a></li>
+              </ul>
+            </div>
+            <div>
+              <img src="img/presentation_capgemini.png" alt="image pour représanter le projet">
+              <ul>
+                <h1>Compétances utilisées</h1>
+                <li>Html / css</li>
+                <li>recherche d'information</li>
+                <li>travaille d'équipe</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      <div>
+        <section onclick="changementPages(4,5)" class="retour "><img src="img/selecteur.png" class="left" alt="->"><button>Retour</button><img src="img/selecteur.png" alt="<-"></section>
+      </div>
+    </main>
+
+    <main id="projet_2" class="pageProjet" style="opacity: 0;"> <!-- pages[6]-->
+      <div>
+        <img src="img/cadrePresentationprojet.png" alt="cadre">
+        <div class="contenueProjet">
+          <h2>prévention accident de la route</h2>
+          <aside>
+            <div>
+              <p>A l'aide d'une base de donnée de la police sur les accidents de la route en open source, génération de statistique divers ainsi que l'écriture d'un document prévenant des différantes causes des accidants en anglais.</p>
+              <ul>
+                <h1>Liens:</h1>
+                <li><a href="projets/sae_police/script_extraction_donnee.sql" target="_blank"> - Cliquer ici pour accéder au script ayant permis l'extraction des données de la police.</a></li>
+                <li><a href="projets/sae_police/prevention_accidnet_portfolio.pdf" target="_blank"> - Cliquer ici pour accéder au doccument réalisé.</a></li>
+              </ul>
+            </div>
+            <div>
+              <img src="img/presentation_police.png" alt="image pour représanter le projet">
+              <ul>
+                <h1>Compétances utilisées</h1>
+                <li>SQL</li>
+                <li>langage R</li>
+                <li>anglais</li>
+                <li>travaille d'équipe</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      <div>
+        <section onclick="changementPages(4,6)" class="retour "><img src="img/selecteur.png" class="left" alt="->"><button>Retour</button><img src="img/selecteur.png" alt="<-"></section>
+      </div>
+    </main>
+
+    <main id="projet_3" class="pageProjet" style="opacity: 0;"> <!-- pages[7]-->
+      <div>
+        <img src="img/cadrePresentationprojet.png" alt="cadre">
+        <div class="contenueProjet">
+          <h2>Portfolio</h2>
+          <aside>
+            <div>
+              <p>Création d'un portfolio afin de présanter c'est compétances et les différants projets réalisés.<br><br> Tout les fioriture utilisé sont a la propriété de la Team Cherry. Ils sont utilisé a but de placeholder le temps d'obtenir des fioritures adaptées.</p>
+              <ul>
+                <h1>Liens:</h1>
+                <li><a href="index.html">Accéder au portfolio...</a></li>
+              </ul>
+            </div>
+            <div>
+              <img src="img/presentation_portfolio_inception.png" alt="image pour représanter le projet">
+              <ul>
+                <h1>Compétances utilisées</h1>
+                <li>HTLM/CSS</li>
+                <li>Javascript</li>
+                <li>A suivre ...</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      <div>
+        <section onclick="changementPages(4,7)" class="retour "><img src="img/selecteur.png" class="left" alt="->"><button>Retour</button><img src="img/selecteur.png" alt="<-"></section>
+      </div>
+    </main>
+
+
+    <script>
+      function changementPages(newPage, page) {
+        pages = document.getElementsByTagName('main');
+        pageActuelle = pages[page];
+        newPage = pages[newPage];
+
+        
+        pageActuelle.style.opacity = 0;
+        pageActuelle.style.zIndex = 0;
+
+        newPage.style.opacity = 100;
+        newPage.style.zIndex = 10;
+
+        //animation de transition à faire//
+      }
+    </script>
+
+  </body>
+</html>
