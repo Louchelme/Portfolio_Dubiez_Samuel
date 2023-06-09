@@ -1,0 +1,495 @@
+ 
+/*#################################*/
+/*              BODY               */
+/*#################################*/
+body {
+    margin: 0;
+ }
+ 
+main {
+  padding-top: 0;
+}
+ 
+ /*#################################*/
+ /*             HEADER              */
+ /*#################################*/
+
+ header li:first-child {
+  position: relative;
+  width: 50px;
+  height: 32.1px;
+ }
+
+ header li:first-child img {
+  position: absolute;
+ }
+
+ header li:first-child img:first-child {
+  opacity: 1;
+ }
+
+ header li:first-child img:last-child {
+  opacity: 0;
+ }
+
+ header ul:hover li:first-child img:last-child {
+  opacity: 1;
+ }
+ 
+
+
+ header {
+  width: 100%;
+  position: relative;
+  display: flex;
+  z-index: 9000;
+ }
+
+ header:enabled ul {
+  background: rgb(23, 171, 218)
+ }
+ 
+ header ul {
+    display: flex;
+    background: rgb(18,0,0);
+    background: linear-gradient(180deg, rgba(0, 112, 173,1) 0%, rgba(23, 171, 218,0.80) 20%, rgba(255, 255, 255,0) 90%);
+    height: 150px;
+    width: 100%;
+    padding-left: 30px;
+    margin:0;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 30px;
+    list-style: none;
+ }
+ 
+ header ul li a {
+    font: 400 22px/1.5 "Ubuntu",sans-serif;
+    text-decoration: none;
+    color: rgb(0, 112, 173);
+    text-shadow: 1xp black;
+ }
+
+ 
+
+ header:hover ul{
+  background: rgb(23, 171, 218)
+
+
+ }
+
+ header:hover ul li a {
+  color: rgb(255,255,255);
+}
+
+ /*#################################*/
+ /*            BANDEAU              */
+ /*#################################*/
+
+ main div div {
+  height: 350px;
+  overflow: hidden;
+  margin-bottom: 100px;
+}
+
+main div section {
+  position:absolute;
+  top: 390px;
+  left: 5%;
+  width: 35%;
+  height: 175px;
+  background: linear-gradient(to right,rgba(0, 112, 173,75%),rgba(23, 171, 218,75%));
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  backdrop-filter: blur(5px);
+}
+
+
+main div section h1 {
+  padding-left: 10%;
+  font-size: 30px;
+  color: white;
+}
+
+
+main div div img {
+  position: relative;
+  bottom: 189%;
+  transform: translateX(-50%);
+  left: 50%;
+  height: 1700px;
+}
+ /*#################################*/
+ /*             ACCEUIL             */
+ /*#################################*/
+
+
+.acceuil{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap : 60px;
+ }
+
+
+.acceuil h1{
+    
+    font-size: 80px;
+    font-family: Times;
+    align-items: center;
+    color: rgb(0, 112, 173);
+
+ }
+ .acceuil article{
+  margin-bottom: 10px;
+ }
+
+ .acceuil section{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+ }
+
+ .acceuil section article{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:50%;
+  padding-top: auto;
+  padding-bottom: auto;
+}
+
+ .acceuil section img{
+    width: 500px;
+    height: auto;
+    box-shadow: 3px 3px 3px rgb(0, 0, 0);
+    border-radius: 5%;
+ } 
+
+.acceuil section article img:hover{
+  transform: scale(1.03,1.03);
+  z-index: 0;
+}
+
+ /*#################################*/
+ /*          PRESENTATION           */
+ /*#################################*/
+
+ .presentation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.presentation>section {
+  text-align: center;
+  width: 40%;
+  margin-top: 20px;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.presentation>section:first-of-type{
+  margin-top: 75px;
+}
+
+ /*#################################*/
+ /*            DIGITAL              */
+ /*#################################*/
+
+ .digital {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.digital table {
+  width: 70%;
+}
+
+.digital th , td {
+  padding: 10px;
+  
+}
+
+.digital th {
+  text-align: left;
+}
+
+.digital tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.digital h3 {
+  font-size: 15px;
+}
+
+ /*#################################*/
+ /*            METIERS              */
+ /*#################################*/
+ .metier {
+  display: flex;
+  flex-direction: column;
+}
+
+.metier section div img {
+  position: absolute;
+  bottom: 0;
+  height: 108px;
+  padding:0%;
+}
+
+.metier section div p {
+  margin: 0px;
+  height: 1px;
+  position: relative;
+  left: -1000%;
+  opacity: 0%;
+  transition-property: opacity;
+  transition-delay: 225ms;
+  transition-duration: 100ms;
+}
+
+.metier section div {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  height: 128px;
+  width: 25%;
+  transition-property: width;
+  transition-duration: 225ms;
+  border-bottom: solid 2px rgb(23, 171, 218);
+  border-top: solid 2px rgb(23, 171, 218);
+  background-color: lightblue;
+}
+
+.metier h2 {
+  font-size: 20px;
+  margin: 0px;
+  width: auto;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.metier section div:hover {
+  width: 75%;
+}
+
+.metier section div:hover p {
+  justify-content: center;
+  position: none;
+  left: 0;
+  margin-top: 10px;
+  width: 80%;
+  height: auto;
+  margin-bottom: 8px;
+  font-size: 18px;
+  opacity: 100%;
+  text-shadow: 1px 1px rgba(128, 128, 128, 0.664);
+}
+
+/* métier a gauche */
+
+.metier .leftworks div {
+  border-radius: 0px 100px 100px 0px;
+  border-right: solid 2px rgb(23, 171, 218);
+}
+
+.metier .leftworks div:hover p {
+  text-align: center;
+  padding-left: 10%;
+}
+
+/* métier a droite */
+
+.metier .rightworks {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.metier .rightworks div {
+  border-radius: 100px 0px 0px 100px;
+  border-left: solid 2px rgb(23, 171, 218);
+  align-items: flex-end;
+}
+
+.metier .rightworks h2 {
+  text-align: right;
+}
+ 
+ /*#################################*/
+ /*              FAQ                */
+ /*#################################*/
+
+ #nom {
+  width : 100%;
+}
+
+#prenom {
+  width: 100%;
+}
+
+.FAQ input {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.FAQ select {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.FAQ h2 {
+  margin-top: 80px;
+}
+
+#reset {
+width: 80px;
+}
+
+#envoyer {
+width: 80px;
+}
+
+.FAQ>section{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.FAQ form {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+}
+
+.FAQ article{
+  margin-top: 4em;
+}
+
+.FAQ details {
+  margin-top: 20px;
+  background-color: rgba(23, 171, 218, 0.50);
+  border-radius: 2px;
+  width: 50%;
+}
+
+.FAQ details div{
+  padding-left: 18px;
+}
+
+.FAQ summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+}
+
+.FAQ summary:after{
+  content: "\2193";
+}
+
+.FAQ details[open] summary::after {
+  content: "\2191";
+}
+
+.FAQ details summary,.FAQ div:nth-last-of-type(2) {
+  margin: 6px;
+}
+
+.FAQ div:nth-last-of-type(2) {
+  font-size: 80%;
+  padding-left: 18px;
+}
+
+
+ /*#################################*/
+ /*             SOURCE              */
+ /*#################################*/
+
+  .source{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+ /*#################################*/
+ /*             FOOTER              */
+ /*#################################*/
+
+
+
+ footer {
+     display: flex;
+     position:relative;
+     flex-wrap: wrap;
+     margin-top : 1em;
+     padding-top: 1em;
+     padding-bottom: 1em;
+     left: 0;
+     bottom: 0;
+     width: 100%;
+     text-align: center;
+     align-items: center;
+     justify-content: space-between;
+     background-color: #f2f2f2;
+  }
+   
+  footer section{
+      width: 400px;
+  }
+
+  footer section:first-of-type{
+      display: flex;
+      padding-left: 15px;
+      justify-content: left;
+  }
+
+  footer section:last-of-type{
+    display: flex;
+    padding-left: 15px;
+    justify-content: right;
+  }
+
+  footer section a{
+      color: black;
+      text-decoration: none;
+      width: max-content;
+      padding: 0;  
+   }
+
+  footer a:hover{
+    transform: scale(1.04);
+   }
+  
+  footer ul{
+      display: flex;
+      padding-left:20px;
+      padding-right: 20px;
+   }
+  footer section:last-of-type ul{
+    display: flex;
+    padding-left:20px;
+    padding-right: 0;
+    }
+
+   .mentions {
+    flex-direction: column;
+    }
+  
+   footer ul li{
+      list-style: none;
+   }
+   
+   footer section:last-of-type ul li a {
+      display: block;
+      color: black;
+      text-decoration: none;
+      margin-left: 1em;
+      margin-top: 0.5em;
+      margin-right: 1em;
+   }
