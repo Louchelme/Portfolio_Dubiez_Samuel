@@ -1,355 +1,499 @@
- 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <title>Mon portfolio</title>
-    <link rel="stylesheet" href="style/style.css"> 
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+      rel="stylesheet"
+    />
+
+    <title>Portfolio Samuel Dubiez</title>
+    <!--
+    Reflux Template
+    https://templatemo.com/tm-531-reflux
+    -->
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css" />
+    <link rel="stylesheet" href="assets/css/templatemo-style.css" />
+    <link rel="stylesheet" href="assets/css/owl.css" />
+    <link rel="stylesheet" href="assets/css/lightbox.css" />
   </head>
 
   <body>
-
-    <main id="selection" class="selection" style="opacity: 100;"> <!-- pages[0]-->
-      <div>
-          <img src="img/decoTitreHaut.png">
-          <h1>portfolio</h1>
-          <h2>by Samuel Dubiez</h2>
-          <img src="img/decoTitreBas.png">
-      </div>
-
-      <div>
-        <section onclick="changementPages(1,0)" ><img src="img/selecteur.png" class="left" alt="->"><button>Qui je suis</button><img src="img/selecteur.png" alt="<-"></section>
-        <section onclick="changementPages(2,0)"><img src="img/selecteur.png" class="left" alt="->"><button>Mon parcour</button><img src="img/selecteur.png" alt="<-"></section>
-        <section onclick="changementPages(3,0)"><img src="img/selecteur.png" class="left" alt="->"><button>Mes compétances</button><img src="img/selecteur.png" alt="<-"></section>
-        <section onclick="changementPages(4,0)"><img src="img/selecteur.png" class="left" alt="->"><button>Mes projets</button><img src="img/selecteur.png" alt="<-"></section>
-      </div>
-    </main>
-
-    <main id="qui_je_suis"  class="qui_je_suis" style="opacity: 0;"> <!-- pages[1]-->
-      <div class="titre">
-        <h2>Qui suis je</h2>
-        <div>
-          <img src="img/decoSousTitre.png">
-          <img src="img/decoSousligne.png">
+    <div id="page-wraper">
+      <!-- Sidebar Menu -->
+      <div class="responsive-nav">
+        <i class="fa fa-bars" id="menu-toggle"></i>
+        <div id="menu" class="menu">
+          <i class="fa fa-times" id="menu-close"></i>
+          <div class="container">
+            <div class="image">
+              <a href="#"><img src="assets/images/author-image.jpg" alt="" /></a>
+            </div>
+            <div class="author-content">
+              <h4>Samuel Dubiez</h4>
+              <span>Video Game Programmer</span>
+            </div>
+            <nav class="main-nav" role="navigation">
+              <ul class="main-menu">
+                <li><a href="#section1">Mon parcours</a></li>
+                <li><a href="#section2">Mes compétences</a></li>
+                <li><a href="#section3">Mes projets</a></li>
+                <li><a href="#section4">Me contacter</a></li>
+              </ul>
+            </nav>
+            <div class="social-network">
+              <ul class="soial-icons">
+                <li>
+                  <a href="https://fb.com/templatemo">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-discord" viewBox="0 0 16 16">
+                      <path d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612"/>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa fa-linkedin"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="copyright-text">
+              <p>Copyright 2019 Reflux Design</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div>
-        <aside>
-          <div>
-            <img src="img/profil.jpg" alt="PP" class="pp">
-            <img src="img/cadrePhoto.png">
+      <section class="section about-me" data-section="section1">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Mon parcours</h2>
+            <div class="line-dec"></div>
+            <span>
+              <!-- text -->
+            </span>
           </div>
-          <ul>
-            <li><p>Samuel Dubiez</p></li>
-            <li><p>né le 24/12/2003</p></li>
-            <li><p>samueldubiez69@gmail.com</p></li>
-            <li><p>06 XX XX XX XX</p></li>
-          </ul>
-        </aside>
-
-          <img src="img/barreCoupure.png">
-
-          <p>Lorem ipsum dolor sit amet</p>
-      </div>
-
-      <div>
-        <section onclick="changementPages(0,1)" class="retour "><img src="img/selecteur.png" class="left" alt="->"><button>Retour</button><img src="img/selecteur.png" alt="<-"></section>
-      </div>
-
-    </main>
-
-    <main id="mon_parcours" class="mon_parcours" style="opacity: 0;"> <!-- pages[2]-->
-      <div class="titre">
-        <h2>Mon parcour</h2>
-        <div>
-          <img src="img/decoSousTitre.png">
-          <img src="img/decoSousligne.png">
-        </div>
-      </div>
-
-      <div>        
-        <aside>
-          <div>
-            <p>Étude supérieur</p>
-            <ul>
-              <li><p>nom : IUT2 Grenoble</p></li>
-              <li><p>ville : 38100 Grenoble</p></li>
-              <li><p>adresse : 2 PI. Doyen Gosse</p></li>
-              <li><p>année : 2022-20XX</p></li>
-              <li><p>mention : En cour</p></li>
-            </ul>
-          </div>
-          <div>
-            <p>stages / travails</p>
-            <ul>
-              <li><p>aucun</p></li>
-              <li><p>aucun</p></li>
-              <li><p>aucun</p></li>
-              <li><p>aucun</p></li>
-            </ul>
-          </div>
-
-        </aside>
-
-        <aside>
-          <div>
-            <p>Collége</p>
-            <ul>
-              <li><p>nom : Marie Laurencin</p></li>
-              <li><p>ville : 69170 Tarare</p></li>
-              <li><p>adresse : 75 Rte de Saint-Clément</p></li>
-              <li><p>année : 2015-2019</p></li>
-              <li><p>mention : Bien</p></li>
-            </ul>
-          </div>
-
-          <div>
-            <p>Lycée</p>
-            <ul>
-              <li><p>nom : Hippolyte Carnot</p></li>
-              <li><p>ville : 42300 Roanne</p></li>
-              <li><p>adresse : 35 Av. Carnot</p></li>
-              <li><p>année : 2019-2022</p></li>
-              <li><p>mention : Bien</p></li>
-            </ul>
-          </div>
-        </aside>
-      </div>
-
-      <div>
-        <section onclick="changementPages(0,2)" class="retour "><img src="img/selecteur.png" class="left" alt="->"><button>Retour</button><img src="img/selecteur.png" alt="<-"></section>
-      </div>
-    </main>
-
-    <main id="mes_competances" class="mes_competances" style="opacity: 0;"> <!-- pages[3]-->
-      <div class="titre">
-        <h2>Mes compétances</h2>
-        <div>
-          <img src="img/decoSousTitre.png">
-          <img src="img/decoSousligne.png">
-        </div>
-      </div>
-
-      <div>
-        <aside>
-          <p>java</p>
-          <img src="img/jaugeLvPlein.png">
-          <img src="img/jaugeLvPlein.png">
-          <img src="img/jaugeLvPlein.png">
-          <img src="img/jaugeLvVide.png">
-          <img src="img/jaugeLvVide.png">
-        </aside>
-        <aside>
-          <p>HTML/CSS</p>
-          <img src="img/jaugeLvPlein.png">
-          <img src="img/jaugeLvPlein.png">
-          <img src="img/jaugeLvPlein.png">
-          <img src="img/jaugeLvPlein.png">
-          <img src="img/jaugeLvVide.png">
-        </aside>
-        <aside>
-          <p>assembleur 68000</p>
-          <img src="img/jaugeLvPlein.png">
-          <img src="img/jaugeLvPlein.png">
-          <img src="img/jaugeLvPlein.png">
-          <img src="img/jaugeLvPlein.png">
-          <img src="img/jaugeLvVide.png">
-        </aside>
-        <aside><p>assidu</p> - <p>travaille d'équipe</p> - <p>créative</p></aside>
-      </div>
-
-      <div>
-        <section onclick="changementPages(0,3)" class="retour "><img src="img/selecteur.png" class="left" alt="->"><button>Retour</button><img src="img/selecteur.png" alt="<-"></section>
-      </div>
-    </main>
-
-    <main id="mes_projets" class="mes_projets" style="opacity: 0;"> <!-- pages[4]-->
-      <div class="titre">
-        <h2>Mes projets</h2>
-        <div>
-          <img src="img/decoSousTitre.png">
-          <img src="img/decoSousligne.png">
-        </div>
-      </div>
-
-      <div>
-        <section class="buttonProjet">
-          <img src="img/selecteur.png" class="left" alt="->">
-            <section class="projet" onclick="changementPages(5,4)">
-              <div>
-                <img src="img/emplacementProjet.png">
-                <div class="imgProjet">
-                  <img src="img/banner_capgemini.png" alt="imageProjet">
+          <div class="left-image-post">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="right-image">
+                  <!--<img src="assets/images/iut2_grenoble.jpg" alt="" />-->
                 </div>
-                
-                <aside>
-                  <div>
-                    <p>presentation Capgemini</p>
-                    <p>janvier 2023</p>
-                  </div>
-                </aside>
               </div>
-            </section>
-          <img src="img/selecteur.png" alt="<-">
-        </section> 
-          <section class="buttonProjet">
-            <img src="img/selecteur.png" class="left" alt="->">
-              <section class="projet" onclick="changementPages(6,4)">
-                <div>
-                  <img src="img/emplacementProjet.png">
-                  <div class="imgProjet">
-                    <img>
-                  </div>
-                  
-                  <aside>
-                    <div>
-                      <p>prévention accident de la route</p>
-                      <p>mai 2023</p>
-                    </div>
-                  </aside>
+              <div class="col-md-6">
+                <div class="left-text">
+                  <h4>BUT Informatique</h4>
+                  <p>
+                    Je suis actuellement en 2éme année de BUT info à l'IUT2 Grenoble dan le parcours A 
+                    "Réalisation d'applications : conception, développement, validation".
+                  </p>
+                  <!--<div class="white-button">
+                    <a href="#">Read More</a>
+                  </div>-->
                 </div>
-              </section>
-            <img src="img/selecteur.png" alt="<-">
-          </section>
-          <section class="buttonProjet">
-            <img src="img/selecteur.png" class="left" alt="->">
-              <section class="projet" onclick="changementPages(7,4)">
-                <div>
-                  <img src="img/emplacementProjet.png">
-                  <div class="imgProjet">
-                    <img>
-                  </div>
-                  
-                  <aside>
-                    <div>
-                      <p>Portfolio</p>
-                      <p>En cours ...</p>
-                    </div>
-                  </aside>
+              </div>
+            </div>
+          </div>
+          <div class="right-image-post">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="left-text">
+                  <h4>BAC technologique STI2D SIN</h4>
+                  <p>
+                    J'ai obtenue le BAC mention Bien en 2021 au Lycée Hyppolyte Carnot à Roanne. 
+                    J'avais pris le parcours SIN "Systèmes d'Information et Numérique".
+                  </p>
+                  <!--<div class="white-button">
+                    <a href="#">Read More</a>
+                  </div>-->
                 </div>
-              </section>
-            <img src="img/selecteur.png" alt="<-">
-          </section>
-      </div>
-
-      <div>
-        <section onclick="changementPages(0,4)" class="retour "><img src="img/selecteur.png" class="left" alt="->"><button>Retour</button><img src="img/selecteur.png" alt="<-"></section>
-      </div>
-    </main>
-
-    <main id="projet_1" class="pageProjet" style="opacity: 0;"> <!-- pages[5]-->
-      <div>
-        <img src="img/cadrePresentationprojet.png" alt="cadre">
-        <div class="contenueProjet">
-          <h2>Capgemini</h2>
-          <aside>
-            <div>
-              <p>Création d'un site web présantant l'entreprise Capgemini sur différant points: qu'est-ce qu'il font?, les différants métier, qui il sont? Ce sitea été créer afin d'aider les étudiants a s'informer sur Capgemini et a se décidé pour leur stages.</p>
-              <ul>
-                <h1>Liens:</h1>
-                <li><a href="projets/capgemini/Files/acceuil.html" > - Cliquer ici pour acceder au site du projet</a></li>
-              </ul>
+              </div>
+              <div class="col-md-6">
+                <div class="right-image">
+                  <!--<img src="assets/images/carnot.png" alt="" />-->
+                </div>
+              </div>
             </div>
-            <div>
-              <img src="img/presentation_capgemini.png" alt="image pour représanter le projet">
-              <ul>
-                <h1>Compétances utilisées</h1>
-                <li>Html / css</li>
-                <li>recherche d'information</li>
-                <li>travaille d'équipe</li>
-              </ul>
-            </div>
-          </aside>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div>
-        <section onclick="changementPages(4,5)" class="retour "><img src="img/selecteur.png" class="left" alt="->"><button>Retour</button><img src="img/selecteur.png" alt="<-"></section>
-      </div>
-    </main>
-
-    <main id="projet_2" class="pageProjet" style="opacity: 0;"> <!-- pages[6]-->
-      <div>
-        <img src="img/cadrePresentationprojet.png" alt="cadre">
-        <div class="contenueProjet">
-          <h2>prévention accident de la route</h2>
-          <aside>
-            <div>
-              <p>A l'aide d'une base de donnée de la police sur les accidents de la route en open source, génération de statistique divers ainsi que l'écriture d'un document prévenant des différantes causes des accidants en anglais.</p>
-              <ul>
-                <h1>Liens:</h1>
-                <li><a href="projets/sae_police/script_extraction_donnee.sql" target="_blank"> - Cliquer ici pour accéder au script ayant permis l'extraction des données de la police.</a></li>
-                <li><a href="projets/sae_police/prevention_accidnet_portfolio.pdf" target="_blank"> - Cliquer ici pour accéder au doccument réalisé.</a></li>
-              </ul>
+      <section class="section my-services" data-section="section2">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Mes compétences</h2>
+            <div class="line-dec"></div>
+            <span>
+              <!-- text -->
+            </span>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="service-item">
+                <div class="first-service-icon service-icon"></div>
+                <h4>Langages OOP</h4>
+                <p>
+                  En tant qu'étudiant en BUT info, j'ai appris à utilisé le Java, le C#, le C++ ainsi que le Python.
+                </p>
+              </div>
             </div>
-            <div>
-              <img src="img/presentation_police.png" alt="image pour représanter le projet">
-              <ul>
-                <h1>Compétances utilisées</h1>
-                <li>SQL</li>
-                <li>langage R</li>
-                <li>anglais</li>
-                <li>travaille d'équipe</li>
-              </ul>
+            <div class="col-md-6">
+              <div class="service-item">
+                <div class="third-service-icon service-icon"></div>
+                <h4>Moteurs de jeux</h4>
+                <p>
+                  Je sais utiliser différent moteur tel que Godot et unity.
+                </p>
+              </div>
             </div>
-          </aside>
+            <div class="col-md-6">
+              <div class="service-item">
+                <div class="second-service-icon service-icon"></div>
+                <h4>développement Web</h4>
+                <p>
+                  Je sais utiliser HTML5 et CSS3 pour réaliser des sites et les rendres dynamique avec Js et PHP.
+                  De plus je sais utiliser des framework tel que Jquery et Symphony.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="service-item">
+                <div class="fourth-service-icon service-icon"></div>
+                <h4>Gestion de base de donnée</h4>
+                <p>
+                  Je sais me servir d'une base de donnée, la mettre a jour ou la déplacer vers un nouveau support.
+                  les principaux outils que je sais utilisé étant PostGresQL et SQlite.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div>
-        <section onclick="changementPages(4,6)" class="retour "><img src="img/selecteur.png" class="left" alt="->"><button>Retour</button><img src="img/selecteur.png" alt="<-"></section>
-      </div>
-    </main>
+      <section class="section my-work" data-section="section3">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Mes projets</h2>
+            <div class="line-dec"></div>
+            <span>
+              <!-- text -->
+            </span>
+          </div>
+          <div class="row">
+            <div class="isotope-wrapper">
+              <form class="isotope-toolbar">
+                <label>
+                  <input
+                    type="radio"
+                    data-type="*"
+                    checked=""
+                    name="isotope-filter"
+                  />
+                  <span>tout</span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    data-type="jeux"
+                    name="isotope-filter"
+                  />
+                  <span>jeux vidéos</span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    data-type="sites"
+                    name="isotope-filter"
+                  />
+                  <span>sites web</span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    data-type="appli"
+                    name="isotope-filter"
+                  />
+                  <span>applications</span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    data-type="autre"
+                    name="isotope-filter"
+                  />
+                  <span>autre</span>
+                </label>
+              </form>
+              <div class="isotope-box">
+                <div class="isotope-item" data-type="jeux">
+                  <figure class="snip1321">
+                    <img
+                      src="assets/images/anatomic_mission.png"
+                      alt="sq-sample26"
+                    />
+                    <figcaption>
+                      <a
+                        href="https://github.com/Louchelme/serious_game_2023"
+                        data-title="Caption"
+                        ><i class="fa fa-search"></i
+                      ></a>
+                      <h4>Anatomic Mission</h4>
+                      <span>Jeux éducatif programmé en GdScript sur Godot.</span>
+                    </figcaption>
+                  </figure>
+                </div>
 
-    <main id="projet_3" class="pageProjet" style="opacity: 0;"> <!-- pages[7]-->
-      <div>
-        <img src="img/cadrePresentationprojet.png" alt="cadre">
-        <div class="contenueProjet">
-          <h2>Portfolio</h2>
-          <aside>
-            <div>
-              <p>Création d'un portfolio afin de présanter c'est compétances et les différants projets réalisés.<br><br> Tout les fioriture utilisé sont a la propriété de la Team Cherry. Ils sont utilisé a but de placeholder le temps d'obtenir des fioritures adaptées.</p>
-              <ul>
-                <h1>Liens:</h1>
-                <li><a href="index.html">Accéder au portfolio...</a></li>
-              </ul>
+                <div class="isotope-item" data-type="jeux">
+                  <figure class="snip1321">
+                    <img
+                      src="assets/images/butRush.png"
+                      alt="sq-sample26"
+                    />
+                    <figcaption>
+                      <a
+                        href="https://github.com/Louchelme/GameJam_2023"
+                        data-title="Caption"
+                        ><i class="fa fa-search"></i
+                      ></a>
+                      <h4>BUTRush</h4>
+                      <span>Jeu programmé en Python avec Pygame.</span>
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="isotope-item" data-type="appli">
+                  <figure class="snip1321">
+                    <img
+                      src="assets/images/portfolio-03.jpg"
+                      alt="sq-sample26"
+                    />
+                    <figcaption>
+                      <a
+                        href="https://github.com/Louchelme/GenEvent"
+                        data-lightbox="image-1"
+                        data-title="Caption"
+                        ><i class="fa fa-search"></i
+                      ></a>
+                      <h4>GenEvent</h4>
+                      <span>Application de gestion d'évènement e-sport programmé en Java et JavaFX/span>
+                    </figcaption>
+                  </figure>
+                </div>
+<!--
+                <div class="isotope-item" data-type="sites">
+                  <figure class="snip1321">
+                    <img
+                      src="assets/images/portfolio-04.jpg"
+                      alt="sq-sample26"
+                    />
+                    <figcaption>
+                      <a
+                        href="assets/images/portfolio-04.jpg"
+                        data-lightbox="image-1"
+                        data-title="Caption"
+                        ><i class="fa fa-search"></i
+                      ></a>
+                      <h4>Item Fourth</h4>
+                      <span>Re-distribution not allowed</span>
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="isotope-item" data-type="autre">
+                  <figure class="snip1321">
+                    <img
+                      src="assets/images/portfolio-05.jpg"
+                      alt="sq-sample26"
+                    />
+                    <figcaption>
+                      <a
+                        href="assets/images/portfolio-05.jpg"
+                        data-lightbox="image-1"
+                        data-title="Caption"
+                        ><i class="fa fa-search"></i
+                      ></a>
+                      <h4>Fifth Awesome</h4>
+                      <span>Ut sollicitudin risus</span>
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="isotope-item" data-type="autre">
+                  <figure class="snip1321">
+                    <img
+                      src="assets/images/portfolio-06.jpg"
+                      alt="sq-sample26"
+                    />
+                    <figcaption>
+                      <a
+                        href="assets/images/portfolio-06.jpg"
+                        data-lightbox="image-1"
+                        data-title="Caption"
+                        ><i class="fa fa-search"></i
+                      ></a>
+                      <h4>Awesome Sixth</h4>
+                      <span>Donec eget massa ante</span>
+                    </figcaption>
+                  </figure>
+                </div>
+              -->
+              </div>
             </div>
-            <div>
-              <img src="img/presentation_portfolio_inception.png" alt="image pour représanter le projet">
-              <ul>
-                <h1>Compétances utilisées</h1>
-                <li>HTLM/CSS</li>
-                <li>Javascript</li>
-                <li>A suivre ...</li>
-              </ul>
-            </div>
-          </aside>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div>
-        <section onclick="changementPages(4,7)" class="retour "><img src="img/selecteur.png" class="left" alt="->"><button>Retour</button><img src="img/selecteur.png" alt="<-"></section>
-      </div>
-    </main>
+      <section class="section contact-me" data-section="section4">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Me contacter</h2>
+            <div class="line-dec"></div>
+            <span>
+              <!-- text -->
+            </span>
+          </div>
+          <div class="row">
+            <div class="right-content">
+              <div class="container">
+                <form id="contact" action="" method="post">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <fieldset>
+                        <input
+                          name="name"
+                          type="text"
+                          class="form-control"
+                          id="name"
+                          placeholder="Your name..."
+                          required=""
+                        />
+                      </fieldset>
+                    </div>
+                    <div class="col-md-6">
+                      <fieldset>
+                        <input
+                          name="email"
+                          type="text"
+                          class="form-control"
+                          id="email"
+                          placeholder="Your email..."
+                          required=""
+                        />
+                      </fieldset>
+                    </div>
+                    <div class="col-md-12">
+                      <fieldset>
+                        <input
+                          name="subject"
+                          type="text"
+                          class="form-control"
+                          id="subject"
+                          placeholder="Subject..."
+                          required=""
+                        />
+                      </fieldset>
+                    </div>
+                    <div class="col-md-12">
+                      <fieldset>
+                        <textarea
+                          name="message"
+                          rows="6"
+                          class="form-control"
+                          id="message"
+                          placeholder="Your message..."
+                          required=""
+                        ></textarea>
+                      </fieldset>
+                    </div>
+                    <div class="col-md-12">
+                      <fieldset>
+                        <button type="submit" id="form-submit" class="button">
+                          Send Message
+                        </button>
+                      </fieldset>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
 
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/custom.js"></script>
     <script>
-      function changementPages(newPage, page) {
-        pages = document.getElementsByTagName('main');
-        pageActuelle = pages[page];
-        newPage = pages[newPage];
+      //according to loftblog tut
+      $(".main-menu li:first").addClass("active");
 
-        
-        pageActuelle.style.opacity = 0;
-        pageActuelle.style.zIndex = 0;
+      var showSection = function showSection(section, isAnimate) {
+        var direction = section.replace(/#/, ""),
+          reqSection = $(".section").filter(
+            '[data-section="' + direction + '"]'
+          ),
+          reqSectionPos = reqSection.offset().top - 0;
 
-        newPage.style.opacity = 100;
-        newPage.style.zIndex = 10;
+        if (isAnimate) {
+          $("body, html").animate(
+            {
+              scrollTop: reqSectionPos
+            },
+            800
+          );
+        } else {
+          $("body, html").scrollTop(reqSectionPos);
+        }
+      };
 
-        //animation de transition à faire//
-      }
+      var checkSection = function checkSection() {
+        $(".section").each(function() {
+          var $this = $(this),
+            topEdge = $this.offset().top - 80,
+            bottomEdge = topEdge + $this.height(),
+            wScroll = $(window).scrollTop();
+          if (topEdge < wScroll && bottomEdge > wScroll) {
+            var currentId = $this.data("section"),
+              reqLink = $("a").filter("[href*=\\#" + currentId + "]");
+            reqLink
+              .closest("li")
+              .addClass("active")
+              .siblings()
+              .removeClass("active");
+          }
+        });
+      };
+
+      $(".main-menu").on("click", "a", function(e) {
+        e.preventDefault();
+        showSection($(this).attr("href"), true);
+      });
+
+      $(window).scroll(function() {
+        checkSection();
+      });
     </script>
-
   </body>
 </html>
