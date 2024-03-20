@@ -1,4 +1,4 @@
-export default class Anime {
+class Anime {
 
     _id;
 
