@@ -6,9 +6,6 @@ const view = {
   //Barre de recherche
   searchBar: document.querySelector("#searchBar"),
 
-  //Toute les card
-  allImageCards : document.querySelectorAll('.card-img-top'),
-
   //div contenant les cards
   listAnime : document.querySelector('#listAnime'),
 
@@ -66,6 +63,7 @@ create_card = (anime ) => {
   buttonCard.classList.add('btn');
   buttonCard.classList.add('btn-dark');
   buttonCard.innerHTML = 'Voir +';
+  buttonCard.href = 'view/anime.html?id=' + anime._id;
   
   cardBody.appendChild(buttonCard);
 
@@ -84,7 +82,7 @@ view.searchBar.addEventListener("change", async(evt) => {
     return
   }
 
-  // -- Suppression des ancien anime 
+  // -- Suppression des anciens animes
   view.listAnime.innerHTML = "";
   // -- desactivation de la bar de recherche
   view.searchBar.setAttribute('disabled', 'disabled');
@@ -104,27 +102,26 @@ view.searchBar.addEventListener("change", async(evt) => {
       anime = new Anime(elem)
       listeAnime.push( anime );
 
-      // TODO : Créé les cards et les l'afficher
       var card = create_card(anime);
       view.listAnime.appendChild(card);
+
+      card.addEventListener('click', () => {
+        // TODO : Rediriger sur la page por voir les details de l'anime avec l'id 
+        location.href = './view/anime.html?id=' + anime._id;
+      })  
 
     });
 
     view.searchBar.removeAttribute('disabled');
-    view.loadingBar.setAttribute('hidden', 'hidden');
+    view.loadingBar.setAttribute('hidden', '');
 
 
+    if (data.length === 0) {
+      view.listAnime.innerText = "Aucun anime trouver :c "; 
+    }
   
   })
+
 })
-
-// --- allImageCards ---
-view.allImageCards.forEach(imageCard => {
-  imageCard.addEventListener('onClick', (evt) => {
-    // TODO : Rediriger sur la page por voir les details de l'anime avec l'id 
-  })  
-});
-
-
 // https://jikan.moe/
 // https://api.jikan.moe/v4/anime?q=azertyuiop&sfw
