@@ -2,13 +2,12 @@ class Anime {
 
     _id;
 
-    _imageUrl; // dico contenant les images
+    _dicoImageUrl; // dico contenant les images
 
     // les différents titres
-    _titles;
+    _dicoTitles;
 
     _type; //movie series TV ...
-    _nbEpisode; // le nombre d'épisodes total
     _duration; // temps d'un épisode
 
     //différents score
@@ -21,25 +20,29 @@ class Anime {
     _season; //saisson de la sortie
 
     //genres
-    _genres;
-    _explicitGenres;
+    _tabGenres = [];
+    _tabExplicitGenres = [];
 
     //production de l'anime
-    _studios;
-    _producers;
-    _licensors;
+    _tabStudios;
+    _tabProducers;
+    _tabLicensors;
 
     //diffusion
     _status;
     _airing;
-    _aired;
+    _dicoAired;
+
+    //nb Episodes vue
+    _curentEpisode;
+    _totalEpisode; // le nombre d'épisodes total
 
     constructor(animData) { //for (let key in editableBtns)
         this._id = animData.mal_id;
-        this._imageUrl = animData.images.jpg;
-        this._titles = animData.titles;
+        this._ImageUrl = animData.images.jpg.large_image_url; 
+        this._dicoTitles = animData.titles; 
         this._type = animData.type;
-        this._nbEpisode = animData.episode;
+        this._totalEpisode = animData.episode;
         this._duration = animData.duration;
         this._rank = animData.rank;
         this._rating = animData.rating;
@@ -47,13 +50,38 @@ class Anime {
         this._synopsis = animData.synopsis;
         this._year = animData.year;
         this._season = animData.season;
-        this._genres = animData.genres;
-        this._explicitGenres = animData.explicitGenres;
-        this._studios = animData.studios;
-        this._producers = animData.producers;
-        this._licensors = animData.licensors;
-        this._status = animData.status;
+
+        for(let [id, value] in animData.genres){
+            this._tabGenres[id] = animData.genres[id].name;
+        }
+
+        for(let [id, value] in animData.explicitGenres){
+            this._tabExplicitGenres[id] = animData.explicitGenres[id].name;
+        }
+
+        for(let [id, value] in animData.studios){
+            this._tabStudios[id] = animData.studios[id].name;
+        }
+
+        for(let [id, value] in animData.producers){
+            this._tabProducers[id] = animData.producers[id].name;
+        }
+
+        for(let [id, value] in animData.licensors){
+            this._tabLicensors[id] = animData.licensors[id].name;
+        }
+
+        this._status = animData.status; 
         this._airing = animData.airing;
-        this._aired = animData.aired;
-      }
+        this._dicoAired = {'from':animData.aired.from, 'to' :animData.aired.to};
+      } 
+
+
+    getCurrentEpisode() {
+        return this._curentEpisode ?? 0;
+    }
+
+    setCurentEpisode(idEpisode) {
+        this._curentEpisode = idEpisode;
+    }
 }
