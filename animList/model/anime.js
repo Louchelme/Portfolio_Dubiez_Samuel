@@ -36,7 +36,11 @@ class Anime {
     _curentEpisode;
     _totalEpisode; // le nombre d'épisodes total
 
-    constructor(animData) { //for (let key in editableBtns)
+    /**
+     * Créer une entité Anime a partir des données de l'API envoyé en argument.
+     * @param {*} animData donnée d'un animé sous forme d
+     */
+    constructor(animData) {
         this._id = animData.mal_id;
         this._imageUrl = animData.images.jpg.large_image_url; 
         this._dicoTitles = animData.titles; 

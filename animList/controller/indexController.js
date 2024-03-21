@@ -37,34 +37,38 @@ view.searchBar.addEventListener("change", async(evt) => {
   view.searchBar.setAttribute('disabled', 'disabled');
   // affichage de la bar de chargement
   view.loadingBar.removeAttribute('hidden');
-  
 
-  fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('http://api.jikan.moe/v4/anime?q='+evt.target.value+'&sfw')}`) //TODO : a foutre dans un DAO api
-  .then( async( response ) => {
+  //initialisation ---
+  var api = new API();
 
+  //lancement de la requéte api et attente du résultat
+  api.searchAnimeByText(evt.target.value)
+  .then(async( response ) => {
+    
     var recherche = await response.json();
     var data = JSON.parse(recherche.contents).data ;
-    
-    var listeAnime = Array();
 
     data.forEach( elem => {
+      //convertion des données en objet Anime
       anime = new Anime(elem)
-      listeAnime.push( anime );
 
+      //création de la 'card'
       var card = create_index_card(anime);
       view.listAnime.appendChild(card);
 
     });
 
+    //réactivation de la barre de recherche
     view.searchBar.removeAttribute('disabled');
+    //désaffichage de la barre de chargement
     view.loadingBar.setAttribute('hidden', '');
 
-
+    //affichage d'un message si aucun résultat trouvé
     if (data.length === 0) {
       view.listAnime.innerText = "Aucun anime trouver :c "; 
     }
-  
-  })
+
+  });
 
 })
 // https://jikan.moe/
