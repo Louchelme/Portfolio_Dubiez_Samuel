@@ -3,6 +3,7 @@ class Anime {
     _id;
 
     _dicoImageUrl; // dico contenant les images
+    _imageUrl;
 
     // les différents titres
     _dicoTitles;
@@ -24,9 +25,9 @@ class Anime {
     _tabExplicitGenres = [];
 
     //production de l'anime
-    _tabStudios;
-    _tabProducers;
-    _tabLicensors;
+    _tabStudios = [];
+    _tabProducers = [];
+    _tabLicensors = [];
 
     //diffusion
     _status;
@@ -39,7 +40,7 @@ class Anime {
 
     constructor(animData) { //for (let key in editableBtns)
         this._id = animData.mal_id;
-        this._ImageUrl = animData.images.jpg.large_image_url; 
+        this._imageUrl = animData.images.jpg.large_image_url; 
         this._dicoTitles = animData.titles; 
         this._type = animData.type;
         this._totalEpisode = animData.episode;
@@ -71,7 +72,7 @@ class Anime {
             this._tabLicensors[id] = animData.licensors[id].name;
         }
 
-        this._status = animData.status; 
+        this._status = animData.status;
         this._airing = animData.airing;
         this._dicoAired = {'from':animData.aired.from, 'to' :animData.aired.to};
       } 
@@ -84,4 +85,18 @@ class Anime {
     setCurentEpisode(idEpisode) {
         this._curentEpisode = idEpisode;
     }
+
+    getDefaultTitle(){
+        return this._dicoTitles[0].title;
+    } 
+    getImageURL(){
+        return this._imageUrl;
+    }
+    getSynopsis(){
+        if (this._synopsis.length <= 50*4 ) {
+            return this._synopsis;
+        }
+        return this._synopsis.slice(0, 50*4) + ' [...]' ?? '';
+    }
+    
 }
