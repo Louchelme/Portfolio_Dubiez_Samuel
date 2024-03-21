@@ -51,14 +51,8 @@ view.searchBar.addEventListener("change", async(evt) => {
       anime = new Anime(elem)
       listeAnime.push( anime );
 
-      var card = create_index_card(anime);
+      var card = create_favory_card(anime);
       view.listAnime.appendChild(card);
-
-      var imgCard = card.querySelector(".card-img-top") // c'est MVC ca ?
-
-      imgCard.addEventListener('click', () => {
-        location.href = './view/anime.html?id=' + anime._id; 
-      })  
 
     });
 

@@ -43,7 +43,7 @@ class Anime {
         this._imageUrl = animData.images.jpg.large_image_url; 
         this._dicoTitles = animData.titles; 
         this._type = animData.type;
-        this._totalEpisode = animData.episode;
+        this._totalEpisode = animData.episodes;
         this._duration = animData.duration;
         this._rank = animData.rank;
         this._rating = animData.rating;
@@ -92,7 +92,7 @@ class Anime {
     getImageURL(){
         return this._imageUrl;
     }
-    getSynopsis(){
+    getShortSynopsis(){
         if (!this._synopsis) {
             return '';
         }
@@ -100,6 +100,13 @@ class Anime {
             return this._synopsis;
         }
         return this._synopsis.slice(0, 50*4) + ' [...]' ?? '';
+    }
+    getFullSynopsis(){
+        return this._synopsis ?? '';
+    }
+
+    getNumberTotalOfEpisode(){
+        return this._totalEpisode ?? 0;
     }
     
 }
