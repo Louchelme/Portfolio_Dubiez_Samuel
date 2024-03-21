@@ -105,9 +105,11 @@ view.searchBar.addEventListener("change", async(evt) => {
       var card = create_card(anime);
       view.listAnime.appendChild(card);
 
-      card.addEventListener('click', () => {
+      var imgCard = card.querySelector(".card-img-top") // c'est MVC ca ?
+
+      imgCard.addEventListener('click', () => {
         // TODO : Rediriger sur la page por voir les details de l'anime avec l'id 
-        location.href = './view/anime.html?id=' + anime._id;
+        location.href = './view/anime.html?id=' + anime._id; // TO
       })  
 
     });

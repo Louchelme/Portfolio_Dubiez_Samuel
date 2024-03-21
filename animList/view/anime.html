@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail</title>
+    <title>Document</title>
 </head>
 <body>
-    
+    <h1 id="title"></h1>
+    <script>
+        var params = new URL(document.location).searchParams;
+        var id = params.get("id"); 
+        document.getElementById("title").innerText = "Id de l'anime : " + id;
+    </script>
 </body>
 </html>
