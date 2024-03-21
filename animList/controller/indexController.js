@@ -1,3 +1,6 @@
+//import Anime
+//import create_index_card
+
 /**
  * Objet constant représentant la vue.
  */
@@ -15,60 +18,6 @@ const view = {
   
 
 };
-
-// TODO : mettre la fonciton dans un fichier
-create_card = (anime ) => {
-
-  // --- Creation de la <div class="col"> ---
-  var mainDiv = document.createElement('div');
-  mainDiv.classList.add('col');
-
-  //Creation de la card
-  var cardDiv = document.createElement('div');
-  cardDiv.classList.add('card');
-  cardDiv.classList.add('shadow-sm');
-  mainDiv.appendChild(cardDiv);
-
-  // --- Creation de l'image ---
-  var imgCard = document.createElement('img');
-  imgCard.style.objectFit = 'cover';
-  imgCard.src = anime.getImageURL();
-  imgCard.classList.add('card-img-top');
-  imgCard.height = 450;
-  imgCard.draggable = false;
-  cardDiv.appendChild(imgCard);
-
-  // --- Creation de la div card-body ---
-  var cardBody = document.createElement('div');
-  cardBody.classList.add('card-body');
-  cardDiv.appendChild(cardBody);
-
-  // --- Creation du Titre ---
-  // TODO : add rank quelque part ?
-  var titreCard = document.createElement('h4'); 
-  titreCard.classList.add('card-title');
-  titreCard.innerText = anime.getDefaultTitle();
-  cardBody.appendChild(titreCard);
-
-  // --- Creation du resumé ---
-  var resumeCard = document.createElement('p');
-  resumeCard.classList.add('card-text');
-  resumeCard.innerText = anime.getSynopsis();
-  cardBody.appendChild(resumeCard);
-
-
-  // --- Creation Boutton ---
-  var buttonCard = document.createElement('a')
-  buttonCard.href = '#';
-  buttonCard.classList.add('btn');
-  buttonCard.classList.add('btn-dark');
-  buttonCard.innerHTML = 'Voir +';
-  buttonCard.href = 'view/anime.html?id=' + anime._id;
-  
-  cardBody.appendChild(buttonCard);
-
-  return mainDiv;
-}
 
 
 
@@ -90,7 +39,7 @@ view.searchBar.addEventListener("change", async(evt) => {
   view.loadingBar.removeAttribute('hidden');
   
 
-  fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('http://api.jikan.moe/v4/anime?q='+evt.target.value+'&sfw')}`)
+  fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('http://api.jikan.moe/v4/anime?q='+evt.target.value+'&sfw')}`) //TODO : a foutre dans un DAO api
   .then( async( response ) => {
 
     var recherche = await response.json();
@@ -102,14 +51,13 @@ view.searchBar.addEventListener("change", async(evt) => {
       anime = new Anime(elem)
       listeAnime.push( anime );
 
-      var card = create_card(anime);
+      var card = create_index_card(anime);
       view.listAnime.appendChild(card);
 
       var imgCard = card.querySelector(".card-img-top") // c'est MVC ca ?
 
       imgCard.addEventListener('click', () => {
-        // TODO : Rediriger sur la page por voir les details de l'anime avec l'id 
-        location.href = './view/anime.html?id=' + anime._id; // TO
+        location.href = './view/anime.html?id=' + anime._id; 
       })  
 
     });

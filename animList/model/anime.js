@@ -93,6 +93,9 @@ class Anime {
         return this._imageUrl;
     }
     getSynopsis(){
+        if (!this._synopsis) {
+            return '';
+        }
         if (this._synopsis.length <= 50*4 ) {
             return this._synopsis;
         }
