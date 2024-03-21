@@ -168,11 +168,6 @@ class Anime {
         return this._tabLicensors ?? ['unknow'];
     }
 
-        //diffusion
-        _status;
-        _airing;
-        _dicoAired;
-
     getStatus(){
         return this._status ?? '';
     }
