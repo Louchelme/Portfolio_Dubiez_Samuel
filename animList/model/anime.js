@@ -1,8 +1,6 @@
 class Anime {
 
     _id;
-
-    _dicoImageUrl; // dico contenant les images
     _imageUrl;
 
     // les différents titres
@@ -89,6 +87,18 @@ class Anime {
     getDefaultTitle(){
         return this._dicoTitles[0].title;
     } 
+
+    /**
+     * 
+     * @param {*} langue la langue écrit en format 'French'
+     */
+    getTitle(langue){
+        for(let [key, value] in this._dicoTitles){
+            if(value.type == langue) return value.title;
+        }
+        return this._dicoTitles[0].title;
+    }
+
     getImageURL(){
         return this._imageUrl;
     }
@@ -101,6 +111,7 @@ class Anime {
         }
         return this._synopsis.slice(0, 50*4) + ' [...]' ?? '';
     }
+
     getFullSynopsis(){
         return this._synopsis ?? '';
     }
@@ -108,5 +119,69 @@ class Anime {
     getNumberTotalOfEpisode(){
         return this._totalEpisode ?? 0;
     }
+
+    getType(){
+        return this._type ?? '';
+    }
+
+    getDuration(){
+        return this._duration ?? '';
+    }
+
+    getRank(){
+        return this._rank ?? '';
+    }
+
+    getRating(){
+        return this._rating ?? 'unknow';
+    }
+
+    getPopularity(){
+        return this._popularity ?? 'unknow';
+    }
+
+    getYear(){
+        return this._year ?? 'unknow';
+    }
+
+    getSeason(){
+        return this._season ?? 'unknow';
+    }
+
+    getGenres(){
+        return this._tabGenres ?? ['unknow'];
+    }
+
+    getExpliciteGenres(){
+        return this._tabExplicitGenres ?? [];
+    }
+
+    getStudios(){
+        return this._tabStudios ?? ['unknow'];
+    }
+
+    getProducers(){
+        return this._tabProducers ?? ['unknow'];
+    }
     
+    getLicensors(){
+        return this._tabLicensors ?? ['unknow'];
+    }
+
+        //diffusion
+        _status;
+        _airing;
+        _dicoAired;
+
+    getStatus(){
+        return this._status ?? '';
+    }
+
+    getAiring(){
+        return this._airing ?? '';
+    }
+
+    getAired(){
+        return this._dicoAired ?? {};
+    }
 }
