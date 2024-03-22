@@ -74,14 +74,8 @@ view.searchBar.addEventListener("change", async (evt) => {
 	api.searchAnimeByText(evt.target.value)
 		.then(async (response) => {
 
-<<<<<<< HEAD
 			var recherche = await response.json();
 			var data = JSON.parse(recherche.contents).data;
-=======
-
-			let recherche = await response.json();
-			let data = JSON.parse(recherche.contents).data;
->>>>>>> 07b517f (oui)
 
 			data.forEach(elem => {
 				//convertion des données en objet Anime
