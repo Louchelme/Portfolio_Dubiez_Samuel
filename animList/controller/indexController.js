@@ -23,23 +23,22 @@ const view = {
 
 
 //initialisation ---
-var api = new API();
+let api = new API();
 
 /**
  * ABCDEFGHIJKLMNOPQRSTUVWXYZ
  */
 api.retrieveTopAiringAnime()
 	.then(async (response) => {
-		var recherche = await response.json();
-		var data = JSON.parse(recherche.contents).data;
+		let recherche = await response.json();
+		let data = JSON.parse(recherche.contents).data;
 
 		data.forEach(elem => {
 			//convertion des données en objet Anime
-			anime = new Anime(elem)
-			Anime.addFavori(anime); //TODO: a enlever plus tard
+			let anime = new Anime(elem)
 
 			//création de la 'card'
-			var card = create_item_caroussel(anime);
+			let card = create_item_caroussel(anime);
 			view.caroussel.appendChild(card);
 
 			card.querySelector('.img-caroussel').addEventListener('click', (evt) => {
@@ -61,6 +60,7 @@ view.searchBar.addEventListener("change", async (evt) => {
 
 	if (document.querySelector(".carousel")) {
 		document.querySelector("#aze").removeChild(document.querySelector(".carousel"));
+		document.querySelector("#aze").children[0].innerText = "Résultat de la recherche";
 	}
 
 	// -- Suppression de l'affichages des anciens animes
@@ -74,15 +74,21 @@ view.searchBar.addEventListener("change", async (evt) => {
 	api.searchAnimeByText(evt.target.value)
 		.then(async (response) => {
 
+<<<<<<< HEAD
 			var recherche = await response.json();
 			var data = JSON.parse(recherche.contents).data;
+=======
+
+			let recherche = await response.json();
+			let data = JSON.parse(recherche.contents).data;
+>>>>>>> 07b517f (oui)
 
 			data.forEach(elem => {
 				//convertion des données en objet Anime
 				anime = new Anime(elem)
 
 				//création de la 'card'
-				var card = create_index_card(anime);
+				let card = create_index_card(anime);
 				view.listAnime.appendChild(card);
 
 				card.querySelector('.card-img-top').addEventListener('click', (evt) => {

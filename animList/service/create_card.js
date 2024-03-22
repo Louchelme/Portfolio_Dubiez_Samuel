@@ -7,17 +7,17 @@
 function create_index_card(anime) {
 
 	// --- Creation de la Main div ---
-	var mainDiv = document.createElement('div');
+	let mainDiv = document.createElement('div');
 	mainDiv.classList.add('col');
 
 	//Creation de la card
-	var cardDiv = document.createElement('div');
+	let cardDiv = document.createElement('div');
 	cardDiv.classList.add('card');
 	cardDiv.classList.add('shadow-sm');
 	mainDiv.appendChild(cardDiv);
 
 	// --- Creation de l'image ---
-	var imgCard = document.createElement('img');
+	let imgCard = document.createElement('img');
 	imgCard.style.objectFit = 'cover';
 	imgCard.src = anime.getImageURL();
 	imgCard.classList.add('card-img-top');
@@ -26,26 +26,26 @@ function create_index_card(anime) {
 	cardDiv.appendChild(imgCard);
 
 	// --- Creation de la div card-body ---
-	var cardBody = document.createElement('div');
+	let cardBody = document.createElement('div');
 	cardBody.classList.add('card-body');
 	cardDiv.appendChild(cardBody);
 
 	// --- Creation du Titre ---
 	// TODO : add rank quelque part ?
-	var titreCard = document.createElement('h4');
+	let titreCard = document.createElement('h4');
 	titreCard.classList.add('card-title');
 	titreCard.innerText = anime.getDefaultTitle();
 	cardBody.appendChild(titreCard);
 
 	// --- Creation du resumé ---
-	var resumeCard = document.createElement('p');
+	let resumeCard = document.createElement('p');
 	resumeCard.classList.add('card-text');
 	resumeCard.innerText = anime.getShortSynopsis();
 	cardBody.appendChild(resumeCard);
 
 
 	// --- Creation Boutton ---
-	var buttonCard = document.createElement('a')
+	let buttonCard = document.createElement('a')
 	buttonCard.classList.add('btn');
 	buttonCard.classList.add('btn-dark');
 	buttonCard.innerHTML = 'Voir +';
@@ -64,88 +64,88 @@ function create_index_card(anime) {
 function create_favory_card(anime) {
 
 	// --- Creation de la main div ---
-	var rootElement = document.createElement('div');
+	let rootElement = document.createElement('div');
 	rootElement.classList.add('card');
 	rootElement.classList.add('mb-3'); //margin bottom de 3
 
 	// --- Creation de la div row ---
-	var row = document.createElement('div');
+	let row = document.createElement('div');
 	row.classList.add('row');
 	rootElement.appendChild(row);
 
 	// --- Creation de la div col contenant l'image ---
-	var conteneurImage = document.createElement('div');
+	let conteneurImage = document.createElement('div');
 	conteneurImage.classList.add('col-md-2');
 	row.appendChild(conteneurImage);
 
 	// --- Creation de l'image ---
-	var image = document.createElement('img');
+	let image = document.createElement('img');
 	image.src = anime.getImageURL();
 	image.classList.add('card-img');
 	conteneurImage.appendChild(image);
 
 	// // --- Creation de l'overlay ---
-	// var conteneurOverlay = document.createElement('div');
+	// let conteneurOverlay = document.createElement('div');
 	// conteneurOverlay.classList.add('card-img-overlay');
 	// conteneurImage.appendChild(conteneurOverlay);
 
 	// // --- Creation de l'ancre contenant le coeur '<a></a>' ---
-	// var ancreCoeur = document.createElement('a');
+	// let ancreCoeur = document.createElement('a');
 	// ancreCoeur.classList.add('card-img-overlay');
 	// conteneurOverlay.appendChild(ancreCoeur);
 
 	// // --- Creation de l'icon coeur ---
-	// var iconCoeur = document.createElement('i');
+	// let iconCoeur = document.createElement('i');
 	// iconCoeur.classList.add('bi');
 	// iconCoeur.classList.add('bi-suit-heart-fill');
 	// iconCoeur.style.color = "#fff";
 	// ancreCoeur.appendChild(iconCoeur);
 
 	// --- Creation de la div col contenant le body de la card ---
-	var conteneurBody = document.createElement('div');
+	let conteneurBody = document.createElement('div');
 	conteneurBody.classList.add('col-md-9');
 	row.appendChild(conteneurBody);
 
 	// --- Creation de la div le body card ---
-	var body = document.createElement('div');
+	let body = document.createElement('div');
 	body.classList.add('card-body');
 	conteneurBody.appendChild(body);
 
 	// --- Creation du titre card ---
-	var titreCard = document.createElement('h5');
+	let titreCard = document.createElement('h5');
 	titreCard.classList.add('card-title');
 	titreCard.innerText = anime.getDefaultTitle()
 	body.appendChild(titreCard);
 
 	// --- Creation de la zone text de la card ---
-	var conteneurText = document.createElement('p');
+	let conteneurText = document.createElement('p');
 	conteneurText.classList.add('card-text');
 	body.appendChild(conteneurText);
 
 	// --- Creation du text de la card ---
-	var textCurrentEpisode = document.createElement('p');
+	let textCurrentEpisode = document.createElement('p');
 	textCurrentEpisode.innerText = 'Current episode : ';
 	conteneurText.appendChild(textCurrentEpisode);
 
 	// --- Creation de l'input-group ---
-	var inputGroup = document.createElement('div');
+	let inputGroup = document.createElement('div');
 	inputGroup.classList.add('input-group');
 	conteneurText.appendChild(inputGroup);
 
 	// --- Creation du champ input ---
-	var input = document.createElement('input');
+	let input = document.createElement('input');
 	input.classList.add('form-control');
 	input.type = "number";
 	input.value = anime.getCurrentEpisode();
 	inputGroup.appendChild(input);
 
 	// --- Creation de l'append-group ---
-	var appendGroup = document.createElement('div');
+	let appendGroup = document.createElement('div');
 	appendGroup.classList.add('input-group-append');
 	inputGroup.appendChild(appendGroup);
 
 	// --- Creation de l'append de l'input ---
-	var appendInput = document.createElement('span');
+	let appendInput = document.createElement('span');
 	appendInput.classList.add('input-group-text');
 	appendInput.innerText = '/' + anime.getNumberTotalOfEpisode();
 	appendGroup.appendChild(appendInput);
@@ -159,10 +159,10 @@ function create_item_caroussel(anime) {
 	// 	<img src="..."
 	// 		class="d-block w-100" alt="...">
 	// </div>
-	var rootElement = document.createElement('div');
+	let rootElement = document.createElement('div');
 	rootElement.classList.add('carousel-item');
 
-	var img = document.createElement('img');
+	let img = document.createElement('img');
 	img.src = anime.getImageURL();
 	img.classList.add("img-caroussel");
 	img.classList.add("d-block")
