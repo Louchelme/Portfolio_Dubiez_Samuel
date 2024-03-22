@@ -1,5 +1,7 @@
 class Anime {
 
+    static favoris = {};
+
     _id;
     _imageUrl;
 
@@ -79,6 +81,18 @@ class Anime {
         this._dicoAired = {'from':animData.aired.from, 'to' :animData.aired.to};
       } 
 
+    static getFovoris(){
+        return this.favoris;
+    }
+
+    static addFavori(anim){
+        this.favoris[anim.getId()] = anim;
+        console.log('favoris ' + anim.getId());
+    }
+
+    static deleteFavori(anim){
+        unset(this.favoris[anim.getId()]);
+    }
 
     getCurrentEpisode() {
         return this._curentEpisode ?? 0;
@@ -110,6 +124,7 @@ class Anime {
     getImageURL(){
         return this._imageUrl;
     }
+
     getShortSynopsis(){
         if (!this._synopsis) {
             return '';
@@ -186,5 +201,18 @@ class Anime {
 
     getAired(){
         return this._dicoAired ?? {};
+    }
+
+    static saveState(){
+        //conversion des favoris en json
+        let state = JSON.stringify(this.favoris);
+        //sauvegarde dans le local storage
+        localStorage.setItem("favoris", state);
+    }
+
+    static restoreState(){
+        //récupération des favoris du local storage
+        let state = localStorage.getItem("favoris");
+        this.favoris = JSON.parse(state);
     }
 }

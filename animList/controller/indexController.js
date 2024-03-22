@@ -69,9 +69,7 @@ view.searchBar.addEventListener("change", async (evt) => {
 	// affichage de la bar de chargement
 	view.loadingBar.removeAttribute('hidden');
 
-
-
-	//lancement de la requéte api et attente du résultat
+	//envoie de la requéte api et attente du résultat
 	api.searchAnimeByText(evt.target.value)
 		.then(async (response) => {
 
