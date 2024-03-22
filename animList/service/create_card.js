@@ -4,56 +4,56 @@
  * @param {Anime} anime
  * @returns Retourne la card créé a partir de l'anime reçu
  */
-function create_index_card (anime ) {
+function create_index_card(anime) {
 
-    // --- Creation de la Main div ---
-    var mainDiv = document.createElement('div');
-    mainDiv.classList.add('col');
-  
-    //Creation de la card
-    var cardDiv = document.createElement('div');
-    cardDiv.classList.add('card');
-    cardDiv.classList.add('shadow-sm');
-    mainDiv.appendChild(cardDiv);
-  
-    // --- Creation de l'image ---
-    var imgCard = document.createElement('img');
-    imgCard.style.objectFit = 'cover';
-    imgCard.src = anime.getImageURL();
-    imgCard.classList.add('card-img-top');
-    imgCard.height = 450;
-    imgCard.draggable = false;
-    cardDiv.appendChild(imgCard);
-  
-    // --- Creation de la div card-body ---
-    var cardBody = document.createElement('div');
-    cardBody.classList.add('card-body');
-    cardDiv.appendChild(cardBody);
-  
-    // --- Creation du Titre ---
-    // TODO : add rank quelque part ?
-    var titreCard = document.createElement('h4'); 
-    titreCard.classList.add('card-title');
-    titreCard.innerText = anime.getDefaultTitle();
-    cardBody.appendChild(titreCard);
-  
-    // --- Creation du resumé ---
-    var resumeCard = document.createElement('p');
-    resumeCard.classList.add('card-text');
-    resumeCard.innerText = anime.getShortSynopsis();
-    cardBody.appendChild(resumeCard);
-  
-  
-    // --- Creation Boutton ---
-    var buttonCard = document.createElement('a')
-    buttonCard.classList.add('btn');
-    buttonCard.classList.add('btn-dark');
-    buttonCard.innerHTML = 'Voir +';
-    buttonCard.href = 'view/anime.html?id=' + anime._id;
-    
-    cardBody.appendChild(buttonCard);
-  
-    return mainDiv;
+	// --- Creation de la Main div ---
+	var mainDiv = document.createElement('div');
+	mainDiv.classList.add('col');
+
+	//Creation de la card
+	var cardDiv = document.createElement('div');
+	cardDiv.classList.add('card');
+	cardDiv.classList.add('shadow-sm');
+	mainDiv.appendChild(cardDiv);
+
+	// --- Creation de l'image ---
+	var imgCard = document.createElement('img');
+	imgCard.style.objectFit = 'cover';
+	imgCard.src = anime.getImageURL();
+	imgCard.classList.add('card-img-top');
+	imgCard.height = 450;
+	imgCard.draggable = false;
+	cardDiv.appendChild(imgCard);
+
+	// --- Creation de la div card-body ---
+	var cardBody = document.createElement('div');
+	cardBody.classList.add('card-body');
+	cardDiv.appendChild(cardBody);
+
+	// --- Creation du Titre ---
+	// TODO : add rank quelque part ?
+	var titreCard = document.createElement('h4');
+	titreCard.classList.add('card-title');
+	titreCard.innerText = anime.getDefaultTitle();
+	cardBody.appendChild(titreCard);
+
+	// --- Creation du resumé ---
+	var resumeCard = document.createElement('p');
+	resumeCard.classList.add('card-text');
+	resumeCard.innerText = anime.getShortSynopsis();
+	cardBody.appendChild(resumeCard);
+
+
+	// --- Creation Boutton ---
+	var buttonCard = document.createElement('a')
+	buttonCard.classList.add('btn');
+	buttonCard.classList.add('btn-dark');
+	buttonCard.innerHTML = 'Voir +';
+	buttonCard.href = 'view/anime.html?id=' + anime._id;
+
+	cardBody.appendChild(buttonCard);
+
+	return mainDiv;
 }
 
 /**
@@ -61,7 +61,7 @@ function create_index_card (anime ) {
  * @param {Anime} anime
  * @returns Retourne la card créé a partir de l'anime reçu
  */
-function create_favory_card (anime) {
+function create_favory_card(anime) {
 
 	// --- Creation de la main div ---
 	var rootElement = document.createElement('div');
@@ -152,4 +152,22 @@ function create_favory_card (anime) {
 
 	return rootElement;
 
+}
+
+function create_item_caroussel(anime) {
+	// <div class="carousel-item">
+	// 	<img src="..."
+	// 		class="d-block w-100" alt="...">
+	// </div>
+	var rootElement = document.createElement('div');
+	rootElement.classList.add('carousel-item');
+
+	var img = document.createElement('img');
+	img.src = anime.getImageURL();
+	img.classList.add("img-caroussel");
+	img.classList.add("d-block")
+	img.classList.add("w-100")
+	rootElement.appendChild(img);
+
+	return rootElement;
 }

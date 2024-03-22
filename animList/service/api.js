@@ -14,4 +14,7 @@ class API {
         return fetch(this._headURL + encodeURIComponent(this._urlApi + 'anime/' + id));
     }
 
+    retrieveTopAiringAnime(){
+        return fetch(this._headURL + encodeURIComponent(this._urlApi + 'top/anime?filter=airing'));
+    }
 }

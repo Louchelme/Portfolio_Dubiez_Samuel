@@ -6,19 +6,46 @@
  */
 const view = {
 
-  //Barre de recherche
-  searchBar: document.querySelector("#searchBar"),
+	//Barre de recherche
+	searchBar: document.querySelector("#searchBar"),
 
-  //div contenant les cards
-  listAnime : document.querySelector('#listAnime'),
+	//div contenant les cards
+	listAnime: document.querySelector('#listAnime'),
 
-  //Loading bar
-  loadingBar : document.querySelector('#loading-bar'),
+	//Loading bar
+	loadingBar: document.querySelector('#loading-bar'),
 
-  
+	//Le caroussel
+	caroussel: document.querySelector('#carousselTopAnime'),
+
 
 };
 
+
+//initialisation ---
+var api = new API();
+
+/**
+ * ABCDEFGHIJKLMNOPQRSTUVWXYZ
+ */
+api.retrieveTopAiringAnime()
+	.then(async (response) => {
+		var recherche = await response.json();
+		var data = JSON.parse(recherche.contents).data;
+
+		data.forEach(elem => {
+			//convertion des données en objet Anime
+			anime = new Anime(elem)
+
+			//création de la 'card'
+			var card = create_item_caroussel(anime);
+			view.caroussel.appendChild(card);
+
+			card.querySelector('.img-caroussel').addEventListener('click', (evt) => {
+				document.location.href = './view/anime.html?id=' + anime.getId();
+			})
+		});
+	})
 
 
 /**
@@ -26,53 +53,58 @@ const view = {
  */
 
 // --- Barre de recherche ---
-view.searchBar.addEventListener("change", async(evt) => {
-  if (evt.target.value.trim().length === 0) {
-    return
-  }
+view.searchBar.addEventListener("change", async (evt) => {
+	if (evt.target.value.trim().length === 0) {
+		return
+	}
 
-  // -- Suppression des anciens animes
-  view.listAnime.innerHTML = "";
-  // -- desactivation de la bar de recherche
-  view.searchBar.setAttribute('disabled', 'disabled');
-  // affichage de la bar de chargement
-  view.loadingBar.removeAttribute('hidden');
+	if (document.querySelector(".carousel")) {
+		document.querySelector("#aze").removeChild(document.querySelector(".carousel"));
+	}
 
-  //initialisation ---
-  var api = new API();
+	// -- Suppression de l'affichages des anciens animes
+	view.listAnime.innerHTML = "";
+	// -- desactivation de la bar de recherche
+	view.searchBar.setAttribute('disabled', 'disabled');
+	// affichage de la bar de chargement
+	view.loadingBar.removeAttribute('hidden');
 
-  //lancement de la requéte api et attente du résultat
-  api.searchAnimeByText(evt.target.value)
-  .then(async( response ) => {
-    
-    var recherche = await response.json();
-    var data = JSON.parse(recherche.contents).data ;
 
-    data.forEach( elem => {
-      //convertion des données en objet Anime
-      anime = new Anime(elem)
 
-      //création de la 'card'
-      var card = create_index_card(anime);
-      view.listAnime.appendChild(card);
+	//lancement de la requéte api et attente du résultat
+	api.searchAnimeByText(evt.target.value)
+		.then(async (response) => {
 
-      card.querySelector('.card-img-top').addEventListener('click', (evt) => {
-        document.location.href = './view/anime.html?id='+anime.getId();
-      })
+			//TODO : supprimer le caroussel à la recherche SI il existe
 
-    });
+			var recherche = await response.json();
+			var data = JSON.parse(recherche.contents).data;
 
-    //réactivation de la barre de recherche
-    view.searchBar.removeAttribute('disabled');
-    //désaffichage de la barre de chargement
-    view.loadingBar.setAttribute('hidden', '');
+			data.forEach(elem => {
+				//convertion des données en objet Anime
+				anime = new Anime(elem)
 
-    //affichage d'un message si aucun résultat trouvé
-    if (data.length === 0) {
-      view.listAnime.innerText = "Aucun anime trouver :c "; 
-    }
+				//création de la 'card'
+				var card = create_index_card(anime);
+				view.listAnime.appendChild(card);
 
-  });
+				card.querySelector('.card-img-top').addEventListener('click', (evt) => {
+					document.location.href = './view/anime.html?id=' + anime.getId();
+				})
+
+			});
+
+			//réactivation de la barre de recherche
+			view.searchBar.removeAttribute('disabled');
+			//désaffichage de la barre de chargement
+			view.loadingBar.setAttribute('hidden', '');
+
+			//affichage d'un message si aucun résultat trouvé
+			if (data.length === 0) {
+				view.listAnime.innerText = "Aucun anime trouvé :c ";
+			}
+
+		});
 
 })
 // https://jikan.moe/

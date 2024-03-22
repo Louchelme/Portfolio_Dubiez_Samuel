@@ -2,111 +2,148 @@
 <html lang="fr">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AnimList</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>AnimList</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 
-    <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
-    <header data-bs-theme="dark">
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">AnimList</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-              <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Rechercher</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="./view/favory.html">Favoris</a>
-                </li>
-              </ul>
-              <!--<ul class="navbar-nav mb-2 mb-md-0 d-flex">
+	<header data-bs-theme="dark">
+		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">AnimList</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+					aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarCollapse">
+					<ul class="navbar-nav me-auto mb-2 mb-md-0">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="#">Rechercher</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./view/favory.html">Favoris</a>
+						</li>
+					</ul>
+					<!--<ul class="navbar-nav mb-2 mb-md-0 d-flex">
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="#">Favoris</a>
                 </li>
               </ul>-->
-            </div>
-          </div>
-        </nav>
-      </header>
+				</div>
+			</div>
+		</nav>
+	</header>
 
-    <main>
+	<main>
 
-        <!-- Section haute de l'applis -->
-        <section class="py-5 text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
+		<!-- Section haute de l'applis -->
+		<section class="py-5 text-center container">
+			<div class="row py-lg-5">
+				<div class="col-lg-6 col-md-8 mx-auto">
 
-                    <!-- Grand titre et petit résumé -->
+					<!-- Grand titre et petit résumé -->
 
-                    <h1 class="fw-light">AnimeList</h1>
-                    <p class="lead text-body-secondary">Recherche tes animes préférés, mets les en favoris pour les retrouver plus facilement, marque à quel episode t'en es pour ne plus te perdre
+					<h1 class="fw-light">AnimeList</h1>
+					<p class="lead text-body-secondary">Recherche tes animes préférés, mets les en favoris pour les
+						retrouver plus facilement, marque à quel episode t'en es pour ne plus te perdre
 
-                    </p>
+					</p>
 
-                    <!-- Barrre de recherche -->
-                    <p>
-                    <div class="input-group rounded">
-                        <input type="search" id="searchBar" class="form-control rounded" placeholder="Search" aria-label="Search"
-                            aria-describedby="search-addon" />
-                        <button href="#" class="input-group-text border-0" id="search-addon"> <!-- TODO : Redirection vers la recherche -->
-                          <i class="bi bi-search"></i>
-                        </button>
-                    </div>
-                    </p>
-                </div>
-            </div>
-        </section>
+					<!-- Barrre de recherche -->
+					<p>
+					<div class="input-group rounded">
+						<input type="search" id="searchBar" class="form-control rounded" placeholder="Search"
+							aria-label="Search" aria-describedby="search-addon" />
+						<button href="#" class="input-group-text border-0" id="search-addon">
+							<!-- TODO : Redirection vers la recherche -->
+							<i class="bi bi-search"></i>
+						</button>
+					</div>
+					</p>
+				</div>
+			</div>
+		</section>
 
-        <!-- Section affichage des animes -->
-        
-            <!-- Loading bar -->
-        
-        <div id="loading-bar" class="progress" style="width : 50%; margin-left: 20%;" hidden >
-            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%" ></div>
-          </div>
+		<!-- Section affichage des animes -->
 
-        <div class="album py-5 bg-body-tertiary">
-            <div class="container">
-                <div id="listAnime" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <!-- Affichage des animes ici -->
+		<!-- Loading bar -->
 
-                    
-                </div>
-        </div>
+		<div id="loading-bar" class="progress" style="width : 50%; margin-left: 20%;" hidden>
+			<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+				aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+		</div>
 
-    </main>
+		<div class="album py-5">
+			<div class="container">
 
-    <!-- Footer -->
-    <footer class="text-center text-lg-start text-muted">
+				<div id ="aze" class="col col-md-5 mx-auto text-center">
 
-        <!-- Copyright -->
-        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-            ©Copyright:
-            <a class="text-reset fw-bold" href="#">SamSam.com</a>
-        </div>
-
-    </footer>
+					<h2>Top anime du moment :</h2>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
 
-        <script src="model/anime.js"></script>
-        <script src="service/api.js"></script>
-        <script src="service/create_card.js"></script>
-        <script src="controller/indexController.js"></script>
+					<!-- Affichage des top anime par defaut -->
+
+
+
+					<div class="carousel slide" data-bs-ride="carousel">
+						<div id="carousselTopAnime" class="carousel-inner">
+
+							<div class="carousel-item active">
+								<img src="https://cdn.myanimelist.net/images/anime/1553/137717l.jpg"
+									class="d-block w-100" alt="...">
+							</div>
+							
+						</div>
+						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+							data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+							data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</button>
+					</div>
+				</div>
+
+
+				<div id="listAnime" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+					<!-- Affichage des animes ici -->
+
+				</div>
+			</div>
+
+	</main>
+
+	<!-- Footer -->
+	<footer class="text-center text-lg-start text-muted">
+
+		<!-- Copyright -->
+		<div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+			©Copyright:
+			<a class="text-reset fw-bold" href="#">SamSam.com</a>
+		</div>
+
+	</footer>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+		crossorigin="anonymous"></script>
+
+	<script src="model/anime.js"></script>
+	<script src="model/api.js"></script>
+	<script src="service/create_card.js"></script>
+	<script src="controller/indexController.js"></script>
 </body>
 
 </html>
