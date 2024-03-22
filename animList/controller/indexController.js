@@ -36,6 +36,7 @@ api.retrieveTopAiringAnime()
 		data.forEach(elem => {
 			//convertion des données en objet Anime
 			anime = new Anime(elem)
+			Anime.addFavori(anime); //TODO: a enlever plus tard
 
 			//création de la 'card'
 			var card = create_item_caroussel(anime);

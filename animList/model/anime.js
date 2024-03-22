@@ -93,13 +93,13 @@ class Anime {
     static addFavori(anim){
         this.favoris[anim.getId()] = anim;
         console.log('new favoris ' + anim.getId());
-        saveState()
+        this.saveState()
     }
 
     static deleteFavori(anim){
-        //unset(this.favoris[anim.getId()]);
+        delete this.favoris[anim.getId()];
         console.log('delete favoris ' + anim.getId());
-        saveState()
+        this.saveState()
     }
 
     getCurrentEpisode() {
