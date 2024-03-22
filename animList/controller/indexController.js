@@ -57,7 +57,7 @@ view.searchBar.addEventListener("change", async(evt) => {
       view.listAnime.appendChild(card);
 
       card.querySelector('.card-img-top').addEventListener('click', (evt) => {
-        document.location.href = './view/anime.html?'+anime.getId();
+        document.location.href = './view/anime.html?id='+anime.getId();
       })
 
     });
