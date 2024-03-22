@@ -12,7 +12,11 @@ const view = {
 
 
 //test des cards
+Anime.restoreState()
+var favoris = Anime.getFavoris();
+console.log('salut');
 
+<<<<<<< HEAD
 fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('http://api.jikan.moe/v4/anime?q=sword art online&sfw')}`) //TODO : a foutre dans un DAO api
 .then(async (response) => {
 
@@ -35,3 +39,27 @@ fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('http://api.jikan
 
     });
 });
+=======
+for(var [key, value] in favoris){
+    var card = create_favory_card(value);
+    view.listAnime.appendChild(card); 
+    console.log('anim : ' + key);
+}
+
+
+// fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('http://api.jikan.moe/v4/anime?q=s&sfw')}`) //TODO : a foutre dans un DAO api
+// .then( async( response ) => {
+
+//     var recherche = await response.json();
+//     var data = JSON.parse(recherche.contents).data ;
+
+//     data.forEach( elem => {
+//         var anime = new Anime(elem)
+
+//         var card = create_favory_card(anime);
+//         view.listAnime.appendChild(card); 
+
+//     });
+  
+//   })
+>>>>>>> 3726c52 (ajout de la saveState Attention crash)

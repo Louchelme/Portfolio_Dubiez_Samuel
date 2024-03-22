@@ -73,8 +73,6 @@ view.searchBar.addEventListener("change", async (evt) => {
 	api.searchAnimeByText(evt.target.value)
 		.then(async (response) => {
 
-			//TODO : supprimer le caroussel à la recherche SI il existe
-
 			var recherche = await response.json();
 			var data = JSON.parse(recherche.contents).data;
 
@@ -104,6 +102,6 @@ view.searchBar.addEventListener("change", async (evt) => {
 
 		});
 
-})
-// https://jikan.moe/
+  });
+//https://jikan.moe/
 // https://api.jikan.moe/v4/anime?q=azertyuiop&sfw

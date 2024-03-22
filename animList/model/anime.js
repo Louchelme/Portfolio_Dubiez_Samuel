@@ -43,6 +43,11 @@ class Anime {
      * @param {*} animData donnée d'un animé sous forme d
      */
     constructor(animData) {
+        if(animData.mal_id == undefined){
+            Object.assign(this, animData);
+            return;
+        }
+
         this._id = animData.mal_id;
         this._imageUrl = animData.images.jpg.large_image_url; 
         this._dicoTitles = animData.titles; 
@@ -56,23 +61,23 @@ class Anime {
         this._year = animData.year;
         this._season = animData.season;
 
-        for(let [id, value] in animData.genres){
+        for(let id in animData.genres){
             this._tabGenres[id] = animData.genres[id].name;
         }
 
-        for(let [id, value] in animData.explicitGenres){
+        for(let id in animData.explicitGenres){
             this._tabExplicitGenres[id] = animData.explicitGenres[id].name;
         }
 
-        for(let [id, value] in animData.studios){
+        for(let id in animData.studios){
             this._tabStudios[id] = animData.studios[id].name;
         }
 
-        for(let [id, value] in animData.producers){
+        for(let id in animData.producers){
             this._tabProducers[id] = animData.producers[id].name;
         }
 
-        for(let [id, value] in animData.licensors){
+        for(let id in animData.licensors){
             this._tabLicensors[id] = animData.licensors[id].name;
         }
 
@@ -81,17 +86,20 @@ class Anime {
         this._dicoAired = {'from':animData.aired.from, 'to' :animData.aired.to};
       } 
 
-    static getFovoris(){
+    static getFavoris(){
         return this.favoris;
     }
 
     static addFavori(anim){
         this.favoris[anim.getId()] = anim;
-        console.log('favoris ' + anim.getId());
+        console.log('new favoris ' + anim.getId());
+        saveState()
     }
 
     static deleteFavori(anim){
-        unset(this.favoris[anim.getId()]);
+        //unset(this.favoris[anim.getId()]);
+        console.log('delete favoris ' + anim.getId());
+        saveState()
     }
 
     getCurrentEpisode() {
@@ -115,8 +123,8 @@ class Anime {
      * @param {*} langue la langue écrit en format 'French'
      */
     getTitle(langue){
-        for(let [key, value] in this._dicoTitles){
-            if(value.type == langue) return value.title;
+        for(var key in this._dicoTitles){
+            if(value.type == langue) return this._dicoTitles[key].title;
         }
         return this._dicoTitles[0].title;
     }
@@ -205,14 +213,21 @@ class Anime {
 
     static saveState(){
         //conversion des favoris en json
-        let state = JSON.stringify(this.favoris);
+        var state = JSON.stringify(this.favoris);
         //sauvegarde dans le local storage
         localStorage.setItem("favoris", state);
+        console.log('favoris saved')
     }
 
     static restoreState(){
         //récupération des favoris du local storage
         let state = localStorage.getItem("favoris");
-        this.favoris = JSON.parse(state);
+        let data = JSON.parse(state);
+
+        for(let id in data){
+            this.favoris[id] = new Anime(data[id]);
+        }
+        
+        console.log('favoris restored')
     }
 }
