@@ -56,6 +56,10 @@ view.searchBar.addEventListener("change", async(evt) => {
       var card = create_index_card(anime);
       view.listAnime.appendChild(card);
 
+      card.querySelector('.card-img-top').addEventListener('click', (evt) => {
+        document.location.href = './view/anime.html?'+anime.getId();
+      })
+
     });
 
     //réactivation de la barre de recherche

@@ -90,7 +90,11 @@ class Anime {
 
     getDefaultTitle(){
         return this._dicoTitles[0].title;
-    } 
+    }
+
+    getId(){
+        return this._id;
+    }
 
     /**
      * 
