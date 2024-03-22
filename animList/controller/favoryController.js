@@ -8,31 +8,19 @@ const view = {
     
 };
 
-
-//test des cards
 Anime.restoreState()
-var favoris = Anime.getFavoris();
-console.log('salut');
+let favoris = Anime.getFavoris();
 
-for(var key in favoris){
-    var card = create_favory_card(favoris[key]);
-    view.listAnime.appendChild(card); 
-    console.log('anim : ' + key);
+for(let key in favoris){
+    let card = create_favory_card(favoris[key]);
+    view.listAnime.appendChild(card);
+
+    let input = card.querySelector("input");
+    input.value = favoris[key].getCurrentEpisode();
+
+    input.addEventListener('change', (evt) => {
+        favoris[key].setCurrentEpisode(evt.target.value);
+    });
 }
 
 
-// fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('http://api.jikan.moe/v4/anime?q=s&sfw')}`) //TODO : a foutre dans un DAO api
-// .then( async( response ) => {
-
-//     var recherche = await response.json();
-//     var data = JSON.parse(recherche.contents).data ;
-
-//     data.forEach( elem => {
-//         var anime = new Anime(elem)
-
-//         var card = create_favory_card(anime);
-//         view.listAnime.appendChild(card); 
-
-//     });
-  
-//   })

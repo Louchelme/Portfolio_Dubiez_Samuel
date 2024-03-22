@@ -81,6 +81,8 @@ view.searchBar.addEventListener("change", async (evt) => {
 				//convertion des données en objet Anime
 				let anime = new Anime(elem)
 
+				Anime.addFavori(anime); //TODO : a virer !
+
 				//création de la 'card'
 				let card = create_index_card(anime);
 				view.listAnime.appendChild(card);

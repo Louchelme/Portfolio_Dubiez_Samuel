@@ -48,6 +48,8 @@ class Anime {
             return;
         }
 
+        this._curentEpisode = 0;
+
         this._id = animData.mal_id;
         this._imageUrl = animData.images.jpg.large_image_url; 
         this._dicoTitles = animData.titles; 
@@ -90,24 +92,25 @@ class Anime {
         return this.favoris;
     }
 
-    static addFavori(anim){
-        this.favoris[anim.getId()] = anim;
-        console.log('new favoris ' + anim.getId());
-        this.saveState()
+    static addFavori(anime){
+        Anime.favoris[anime.getId()] = anime;
+        Anime.saveState()
     }
 
-    static deleteFavori(anim){
-        delete this.favoris[anim.getId()];
-        console.log('delete favoris ' + anim.getId());
-        this.saveState()
+    static deleteFavori(anime){
+        delete this.favoris[anime.getId()];
+        Anime.saveState()
     }
 
     getCurrentEpisode() {
         return this._curentEpisode ?? 0;
     }
 
-    setCurentEpisode(idEpisode) {
-        this._curentEpisode = idEpisode;
+    setCurrentEpisode(numEpisode) {
+        this._curentEpisode = numEpisode;
+        Anime.deleteFavori(this);
+        Anime.addFavori(this);
+
     }
 
     getDefaultTitle(){
@@ -213,10 +216,9 @@ class Anime {
 
     static saveState(){
         //conversion des favoris en json
-        var state = JSON.stringify(this.favoris);
+        var state = JSON.stringify(Anime.favoris);
         //sauvegarde dans le local storage
         localStorage.setItem("favoris", state);
-        console.log('favoris saved')
     }
 
     static restoreState(){
@@ -225,9 +227,7 @@ class Anime {
         let data = JSON.parse(state);
 
         for(let id in data){
-            this.favoris[id] = new Anime(data[id]);
+            Anime.favoris[id] = new Anime(data[id]);
         }
-        
-        console.log('favoris restored')
     }
 }
