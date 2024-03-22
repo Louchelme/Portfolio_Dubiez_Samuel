@@ -79,7 +79,7 @@ view.searchBar.addEventListener("change", async (evt) => {
 
 			data.forEach(elem => {
 				//convertion des données en objet Anime
-				anime = new Anime(elem)
+				let anime = new Anime(elem)
 
 				//création de la 'card'
 				let card = create_index_card(anime);
