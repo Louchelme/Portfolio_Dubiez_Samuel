@@ -85,11 +85,19 @@ class Anime {
 
         this._status = animData.status;
         this._airing = animData.airing;
-        this._dicoAired = {'from':animData.aired.from, 'to' :animData.aired.to};
+
+        //init _dicoAired
+        let to = '';
+        if(animData.aired.to == null ){
+            to = 'non finie';
+        } else {
+            to = animData.aired.to.substr(0,10) ?? 'pas encore finie';
+        }
+        this._dicoAired = {'from':animData.aired.from.substr(0,10), 'to' :to};
       } 
 
     static getFavoris(){
-        return this.favoris;
+        return Anime.favoris;
     }
 
     static addFavori(anime){
@@ -101,7 +109,7 @@ class Anime {
     }
 
     static deleteFavori(anime){
-        delete this.favoris[anime.getId()];
+        delete Anime.favoris[anime.getId()];
         Anime.saveState()
     }
 
@@ -129,7 +137,7 @@ class Anime {
      */
     getTitle(langue){
         for(var key in this._dicoTitles){
-            if(value.type == langue) return this._dicoTitles[key].title;
+            if(this._dicoTitles[key].type == langue) return this._dicoTitles[key].title;
         }
         return this._dicoTitles[0].title;
     }

@@ -58,7 +58,7 @@ view.searchBar.addEventListener("change", async (evt) => {
 		return
 	}
 
-	if (document.querySelector(".carousel")) {
+	if (document.querySelector(".carousel")) {// TODO : changer les 'aze'
 		document.querySelector("#aze").removeChild(document.querySelector(".carousel"));
 		document.querySelector("#aze").children[0].innerText = "Résultat de la recherche";
 	}
@@ -74,8 +74,8 @@ view.searchBar.addEventListener("change", async (evt) => {
 	api.searchAnimeByText(evt.target.value)
 		.then(async (response) => {
 
-			var recherche = await response.json();
-			var data = JSON.parse(recherche.contents).data;
+			let recherche = await response.json();
+			let data = JSON.parse(recherche.contents).data;
 
 			data.forEach(elem => {
 				//convertion des données en objet Anime
