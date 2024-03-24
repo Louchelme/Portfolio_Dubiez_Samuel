@@ -7,65 +7,26 @@
 function create_index_card(anime) {
 
 	// --- Creation de la Main div ---
-	let mainDiv = document.createElement('div');
-	mainDiv.classList.add('col');
+	let rootElement = document.createElement('div');
+	rootElement.classList.add('col');
 
-	//Creation de la card
-	let cardDiv = document.createElement('div');
-	cardDiv.classList.add('card');
-	cardDiv.classList.add('shadow-sm');
-	mainDiv.appendChild(cardDiv);
+	rootElement.innerHTML =
+	`<div class="col">
+		<div class="card shadow-sm">
+			<img style="object-fit: cover;" src="${anime.getImageURL()}" class="card-img-top" height="450" draggable="false">
+			<div class="card-body">
+				<h4 class="card-title">${anime.getDefaultTitle()}</h4>
+				<p class="card-text">${anime.getShortSynopsis()}</p>
+				<div class="card-body">
+					<a class="btn btn-dark" href="view/anime.html?id=${anime.getId()}">Voir +</a>
+					<a class="btn btn-danger btn-favory"}">Ajouter au favoris <i class="bi bi-suit-heart-fill"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	`;
 
-	// --- Creation de l'image ---
-	let imgCard = document.createElement('img');
-	imgCard.style.objectFit = 'cover';
-	imgCard.src = anime.getImageURL();
-	imgCard.classList.add('card-img-top');
-	imgCard.height = 450;
-	imgCard.draggable = false;
-	cardDiv.appendChild(imgCard);
-
-	// --- Creation de la div card-body ---
-	let cardBody = document.createElement('div');
-	cardBody.classList.add('card-body');
-	cardDiv.appendChild(cardBody);
-
-	// --- Creation du Titre ---
-	// TODO : add rank quelque part ?
-	let titreCard = document.createElement('h4');
-	titreCard.classList.add('card-title');
-	titreCard.innerText = anime.getDefaultTitle();
-	cardBody.appendChild(titreCard);
-
-	// --- Creation du resumé ---
-	let resumeCard = document.createElement('p');
-	resumeCard.classList.add('card-text');
-	resumeCard.innerText = anime.getShortSynopsis();
-	cardBody.appendChild(resumeCard);
-
-	// zone Boutton
-	let containerButton = document.createElement('div');
-	containerButton.classList.add('card-body');
-	cardBody.appendChild(containerButton);
-
-
-	// --- Creation Boutton Voir plus ---
-	let buttonVoirCard = document.createElement('a')
-	buttonVoirCard.classList.add('btn');
-	buttonVoirCard.classList.add('btn-dark');
-	buttonVoirCard.innerHTML = 'Voir +';
-	buttonVoirCard.href = 'view/anime.html?id=' + anime._id;
-	containerButton.appendChild(buttonVoirCard);
-
-	// --- Creation Boutton ajouter au favoris ---
-	let buttonAddFavCard = document.createElement('a')
-	buttonAddFavCard.classList.add('btn');
-	buttonAddFavCard.classList.add('btn-danger');
-	buttonAddFavCard.classList.add('btn-favory');
-	buttonAddFavCard.innerHTML = 'Ajouter au favoris <i class="bi bi-suit-heart-fill"></i>';
-	containerButton.appendChild(buttonAddFavCard);
-
-	return mainDiv;
+	return rootElement;
 
 
 	/*

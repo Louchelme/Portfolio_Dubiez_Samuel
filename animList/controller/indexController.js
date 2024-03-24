@@ -98,7 +98,6 @@ view.searchBar.addEventListener("change", async (evt) => {
 					//supression du boutton ajout favoris
 					evt.target.remove();
 				});
-		
 			});
 
 			//réactivation de la barre de recherche
