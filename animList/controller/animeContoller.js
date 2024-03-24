@@ -56,89 +56,90 @@ const view = {
 
 };
 
+function initPage(){ 
+	//initialisation ---
+	let api = new API();
 
-//initialisation ---
-let api = new API();
+	//récupération de l'identifiant de l'animé dans l'url
+	let params = new URL(document.location).searchParams;
+	let id = params.get("id");
 
-//récupération de l'identifiant de l'animé dans l'url
-let params = new URL(document.location).searchParams;
-let id = params.get("id");
+	/**
+	 * Envoie de la requéte api et affichage du résultat
+	 */
+	api.searchAnimeById(id).then(async (response) => {
 
-/**
- * Envoie de la requéte api et affichage du résultat
- */
-api.searchAnimeById(id).then(async (response) => {
+		//traitement de la réponse api
+		let recherche = await response.json();
+		let data = JSON.parse(recherche.contents).data;
 
-	//traitement de la réponse api
-	let recherche = await response.json();
-	let data = JSON.parse(recherche.contents).data;
+		//conversion en un objet Anime
+		let anime = new Anime(data);
 
-	//conversion en un objet Anime
-	let anime = new Anime(data);
+		//placement des informations dans la page
+		view.animeImg.src = anime.getImageURL(); //image
+		view.animeTitles.innerText = anime.getTitle("English"); //title
 
-	//placement des informations dans la page
-	view.animeImg.src = anime.getImageURL(); //image
-	view.animeTitles.innerText = anime.getTitle("English"); //title
+		//popularity
+		if(anime.getPopularity() == ''){
+			view.animeRank.innerText = 'Score: None';
+		} else {
+			view.animePopularity.innerText = 'Score: ' + anime.getPopularity();
+		}
 
-	//popularity
-	if(anime.getPopularity() == ''){
-		view.animeRank.innerText = 'Score: None';
-	} else {
-		view.animePopularity.innerText = 'Score: ' + anime.getPopularity();
-	}
+		//rank
+		if(anime.getRank() == ''){
+			view.animeRank.innerText = 'Rank: None';
+		} else {
+			view.animeRank.innerText = 'Rank: ' + anime.getRank();
+		}
 
-	//rank
-	if(anime.getRank() == ''){
-		view.animeRank.innerText = 'Rank: None';
-	} else {
-		view.animeRank.innerText = 'Rank: ' + anime.getRank();
-	}
+		view.animeType.innerText = anime.getType();//type
+		view.animeRating.innerText = anime.getRating();//rating
 
-	view.animeType.innerText = anime.getType();//type
-	view.animeRating.innerText = anime.getRating();//rating
+		//genres
+		let listGenres = '';
+		let genres = anime.getGenres();
+		for(let id in genres){
+			listGenres += genres[id] + ', ';
+		}
+		view.animeGenres.innerText = listGenres;
 
-	//genres
-	let listGenres = '';
-	let genres = anime.getGenres();
-	for(let id in genres){
-		listGenres += genres[id] + ', ';
-	}
-	view.animeGenres.innerText = listGenres;
+		view.animeNbEpisde.innerText = anime.getNumberTotalOfEpisode();//number of episode
+		view.animeDuration.innerText = anime.getDuration();//duration
+		view.animeSortie.innerText = anime.getYear() + ' ' + anime.getSeason();//sortie
+		view.animeStatus.innerText = anime.getStatus();//status
 
-	view.animeNbEpisde.innerText = anime.getNumberTotalOfEpisode();//number of episode
-	view.animeDuration.innerText = anime.getDuration();//duration
-	view.animeSortie.innerText = anime.getYear() + ' ' + anime.getSeason();//sortie
-	view.animeStatus.innerText = anime.getStatus();//status
+		view.animeAired.innerText = 'de ' + anime.getAired().from + "\nà " + anime.getAired().to //aired
 
-	view.animeAired.innerText = 'de ' + anime.getAired().from + "\nà " + anime.getAired().to //aired
+		//studio
+		let listStudio = '';
+		let studios = anime.getStudios();
+		for(let id in studios){
+			listStudio += studios[id] + ', ';
+		}
+		view.animeStudio.innerText = listStudio;
 
-	//studio
-	let listStudio = '';
-	let studios = anime.getStudios();
-	for(let id in studios){
-		listStudio += studios[id] + ', ';
-	}
-	view.animeStudio.innerText = listStudio;
+		//producters
+		let listProducters ='';
+		let producters = anime.getProducers();
+		for(let id in producters){
+			listProducters += producters[id] + ', ';
+		}
+		view.animeProducters.innerText = listProducters;
 
-	//producters
-	let listProducters ='';
-	let producters = anime.getProducers();
-	for(let id in producters){
-		listProducters += producters[id] + ', ';
-	}
-	view.animeProducters.innerText = listProducters;
+		//licensers
+		let listLicesers = '';
+		let licensers = anime.getStudios();
+		for(let id in licensers){
+			listLicesers += licensers[id] + ', ';
+		}
+		view.animeLicensers.innerText = listLicesers;
 
-	//licensers
-	let listLicesers = '';
-	let licensers = anime.getStudios();
-	for(let id in licensers){
-		listLicesers += licensers[id] + ', ';
-	}
-	view.animeLicensers.innerText = listLicesers;
+		view.animeSysnopsis.innerText = anime.getFullSynopsis();//synopsis
 
-	view.animeSysnopsis.innerText = anime.getFullSynopsis();//synopsis
+	});
 
-});
+}
 
-//https://jikan.moe/
-//https://api.jikan.moe/v4/anime?q=azertyuiop&sfw
+initPage();

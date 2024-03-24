@@ -58,9 +58,9 @@ view.searchBar.addEventListener("change", async (evt) => {
 		return
 	}
 
-	if (document.querySelector(".carousel")) {// TODO : changer les 'aze'
-		document.querySelector("#aze").removeChild(document.querySelector(".carousel"));
-		document.querySelector("#aze").children[0].innerText = "Résultat de la recherche";
+	if (document.querySelector(".carousel")) {
+		document.querySelector("#topRank").removeChild(document.querySelector(".carousel"));
+		document.querySelector("#topRank").children[0].innerText = "Résultat de la recherche";
 	}
 
 	// -- Suppression de l'affichages des anciens animes
@@ -112,5 +112,3 @@ view.searchBar.addEventListener("change", async (evt) => {
 
 		});
 });
-//https://jikan.moe/
-// https://api.jikan.moe/v4/anime?q=azertyuiop&sfw
