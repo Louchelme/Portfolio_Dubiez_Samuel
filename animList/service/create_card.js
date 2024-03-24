@@ -61,6 +61,7 @@ function create_index_card(anime) {
 	let buttonAddFavCard = document.createElement('a')
 	buttonAddFavCard.classList.add('btn');
 	buttonAddFavCard.classList.add('btn-danger');
+	buttonAddFavCard.classList.add('btn-favory');
 	buttonAddFavCard.innerHTML = 'Ajouter au favoris <i class="bi bi-suit-heart-fill"></i>';
 	containerButton.appendChild(buttonAddFavCard);
 

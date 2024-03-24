@@ -91,13 +91,12 @@ view.searchBar.addEventListener("change", async (evt) => {
 					document.location.href = './view/anime.html?id=' + anime.getId();
 				});
 
-				//Ajout du click button ajout favoris
-				card.addEventListener("click", (evt) => {
+				let btnAddFav = card.querySelector(".btn-favory");
+				//Remove des favoris
+				btnAddFav.addEventListener('click', (evt) => {
 					Anime.addFavori(anime);
-
 					//supression du boutton ajout favoris
 					evt.target.remove();
-
 				});
 		
 			});
