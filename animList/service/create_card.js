@@ -43,17 +43,33 @@ function create_index_card(anime) {
 	resumeCard.innerText = anime.getShortSynopsis();
 	cardBody.appendChild(resumeCard);
 
+	// zone Boutton
+	let containerButton = document.createElement('div');
+	containerButton.classList.add('card-body');
+	cardBody.appendChild(containerButton);
 
-	// --- Creation Boutton ---
-	let buttonCard = document.createElement('a')
-	buttonCard.classList.add('btn');
-	buttonCard.classList.add('btn-dark');
-	buttonCard.innerHTML = 'Voir +';
-	buttonCard.href = 'view/anime.html?id=' + anime._id;
 
-	cardBody.appendChild(buttonCard);
+	// --- Creation Boutton Voir plus ---
+	let buttonVoirCard = document.createElement('a')
+	buttonVoirCard.classList.add('btn');
+	buttonVoirCard.classList.add('btn-dark');
+	buttonVoirCard.innerHTML = 'Voir +';
+	buttonVoirCard.href = 'view/anime.html?id=' + anime._id;
+	containerButton.appendChild(buttonVoirCard);
+
+	// --- Creation Boutton ajouter au favoris ---
+	let buttonAddFavCard = document.createElement('a')
+	buttonAddFavCard.classList.add('btn');
+	buttonAddFavCard.classList.add('btn-danger');
+	buttonAddFavCard.innerHTML = 'Ajouter au favoris <i class="bi bi-suit-heart-fill"></i>';
+	containerButton.appendChild(buttonAddFavCard);
 
 	return mainDiv;
+
+
+	/*
+	<a href="#" class="btn btn-danger">Ajouter au favoris <i class="bi bi-suit-heart-fill"></i></a>
+	*/
 }
 
 /**
@@ -68,88 +84,30 @@ function create_favory_card(anime) {
 	rootElement.classList.add('card');
 	rootElement.classList.add('mb-3'); //margin bottom de 3
 
-	// --- Creation de la div row ---
-	let row = document.createElement('div');
-	row.classList.add('row');
-	rootElement.appendChild(row);
-
-	// --- Creation de la div col contenant l'image ---
-	let conteneurImage = document.createElement('div');
-	conteneurImage.classList.add('col-md-2');
-	row.appendChild(conteneurImage);
-
-	// --- Creation de l'image ---
-	let image = document.createElement('img');
-	image.src = anime.getImageURL();
-	image.classList.add('card-img');
-	conteneurImage.appendChild(image);
-
-	// // --- Creation de l'overlay ---
-	// let conteneurOverlay = document.createElement('div');
-	// conteneurOverlay.classList.add('card-img-overlay');
-	// conteneurImage.appendChild(conteneurOverlay);
-
-	// // --- Creation de l'ancre contenant le coeur '<a></a>' ---
-	// let ancreCoeur = document.createElement('a');
-	// ancreCoeur.classList.add('card-img-overlay');
-	// conteneurOverlay.appendChild(ancreCoeur);
-
-	// // --- Creation de l'icon coeur ---
-	// let iconCoeur = document.createElement('i');
-	// iconCoeur.classList.add('bi');
-	// iconCoeur.classList.add('bi-suit-heart-fill');
-	// iconCoeur.style.color = "#fff";
-	// ancreCoeur.appendChild(iconCoeur);
-
-	// --- Creation de la div col contenant le body de la card ---
-	let conteneurBody = document.createElement('div');
-	conteneurBody.classList.add('col-md-9');
-	row.appendChild(conteneurBody);
-
-	// --- Creation de la div le body card ---
-	let body = document.createElement('div');
-	body.classList.add('card-body');
-	conteneurBody.appendChild(body);
-
-	// --- Creation du titre card ---
-	let titreCard = document.createElement('h5');
-	titreCard.classList.add('card-title');
-	titreCard.innerText = anime.getDefaultTitle()
-	body.appendChild(titreCard);
-
-	// --- Creation de la zone text de la card ---
-	let conteneurText = document.createElement('p');
-	conteneurText.classList.add('card-text');
-	body.appendChild(conteneurText);
-
-	// --- Creation du text de la card ---
-	let textCurrentEpisode = document.createElement('p');
-	textCurrentEpisode.innerText = 'Current episode : ';
-	conteneurText.appendChild(textCurrentEpisode);
-
-	// --- Creation de l'input-group ---
-	let inputGroup = document.createElement('div');
-	inputGroup.classList.add('input-group');
-	conteneurText.appendChild(inputGroup);
-
-	// --- Creation du champ input ---
-	let input = document.createElement('input');
-	input.classList.add('form-control');
-	input.type = "number";
-	input.value = anime.getCurrentEpisode();
-	inputGroup.appendChild(input);
-
-	// --- Creation de l'append-group ---
-	let appendGroup = document.createElement('div');
-	appendGroup.classList.add('input-group-append');
-	inputGroup.appendChild(appendGroup);
-
-	// --- Creation de l'append de l'input ---
-	let appendInput = document.createElement('span');
-	appendInput.classList.add('input-group-text');
-	appendInput.innerText = '/' + anime.getNumberTotalOfEpisode();
-	appendGroup.appendChild(appendInput);
-
+	rootElement.innerHTML = 
+	`<div class="row">
+		<div class="col-md-2">
+			<img src="${anime.getImageURL()}" class="card-img" />
+		</div>
+		<div class = "col-md-8">
+			<div class="card-body">
+				<h5 class ="ard-title">${anime.getDefaultTitle()} </h5>
+				<p class="card-text">
+					<p>Current episode : </p>
+					<div class="input-group">
+						<input type="number" class="form-control" value="$anime.anime.getCurrentEpisode()" />
+						<div class ="input-group-append">
+							<span class="input-group-text">/ ${anime.getNumberTotalOfEpisode()}</span>
+						</div>
+					</div>
+				</p>
+			</div>
+		</div>
+		<div class="col-md-2 mx-auto justify-content-md-end">
+			<a class="btn btn-danger btn-favory" role="button">Remove <i class="bi bi-heartbreak"></i></a>
+		</div>
+	<div>
+	`;
 	return rootElement;
 
 }

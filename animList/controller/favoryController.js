@@ -8,19 +8,41 @@ const view = {
     
 };
 
-Anime.restoreState()
-let favoris = Anime.getFavoris();
+function initPage() {
+    view.listAnime.innerHTML ="";
 
-for(let key in favoris){
-    let card = create_favory_card(favoris[key]);
-    view.listAnime.appendChild(card);
+    Anime.restoreState()
+    let favoris = Anime.getFavoris();
 
-    let input = card.querySelector("input");
-    input.value = favoris[key].getCurrentEpisode();
+    for(let key in favoris){
+        
+        let anime = favoris[key];
 
-    input.addEventListener('change', (evt) => {
-        favoris[key].setCurrentEpisode(evt.target.value);
-    });
+        let card = create_favory_card(anime);
+        view.listAnime.appendChild(card);
+
+        let input = card.querySelector("input");
+        input.value = anime.getCurrentEpisode();
+
+        //Enregistre en local l'episode en cour lorsque l'utilisateur le change
+        input.addEventListener('change', (evt) => {
+            anime.setCurrentEpisode(evt.target.value);
+        });
+
+        let btnRemoveFav = card.querySelector(".btn-favory");
+        //Remove des favoris
+        btnRemoveFav.addEventListener('click', (evt) => {
+            Anime.deleteFavori(anime)
+            initPage();
+        });
+
+        
+
+    }
 }
+
+initPage();
+
+
 
 

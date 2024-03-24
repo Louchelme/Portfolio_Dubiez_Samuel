@@ -18,7 +18,6 @@ const view = {
 	//Le caroussel
 	caroussel: document.querySelector('#carousselTopAnime'),
 
-
 };
 
 
@@ -26,7 +25,7 @@ const view = {
 let api = new API();
 
 /**
- * ABCDEFGHIJKLMNOPQRSTUVWXYZ
+ * Chargement des top animes
  */
 api.retrieveTopAiringAnime()
 	.then(async (response) => {
@@ -51,6 +50,7 @@ api.retrieveTopAiringAnime()
 /**
  * Set-up des Listeners
  */
+
 
 // --- Barre de recherche ---
 view.searchBar.addEventListener("change", async (evt) => {
@@ -81,16 +81,25 @@ view.searchBar.addEventListener("change", async (evt) => {
 				//convertion des données en objet Anime
 				let anime = new Anime(elem)
 
-				Anime.addFavori(anime); //TODO : a virer !
-
 				//création de la 'card'
 				let card = create_index_card(anime);
 				view.listAnime.appendChild(card);
 
-				card.querySelector('.card-img-top').addEventListener('click', (evt) => {
+					
+				//Ajout du click sur l'image de la card
+				card.querySelector('.card-img-top').addEventListener('click', () => {
 					document.location.href = './view/anime.html?id=' + anime.getId();
-				})
+				});
 
+				//Ajout du click button ajout favoris
+				card.addEventListener("click", (evt) => {
+					Anime.addFavori(anime);
+
+					//supression du boutton ajout favoris
+					evt.target.remove();
+
+				});
+		
 			});
 
 			//réactivation de la barre de recherche
@@ -100,11 +109,10 @@ view.searchBar.addEventListener("change", async (evt) => {
 
 			//affichage d'un message si aucun résultat trouvé
 			if (data.length === 0) {
-				view.listAnime.innerText = "Aucun anime trouvé :c ";
+					view.listAnime.innerText = "Aucun anime trouvé :c ";
 			}
 
 		});
-
-  });
+});
 //https://jikan.moe/
 // https://api.jikan.moe/v4/anime?q=azertyuiop&sfw

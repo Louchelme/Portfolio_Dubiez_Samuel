@@ -93,6 +93,9 @@ class Anime {
     }
 
     static addFavori(anime){
+        if (Anime.favoris[anime.getId()]){
+            Anime.deleteFavori(anime);
+        }
         Anime.favoris[anime.getId()] = anime;
         Anime.saveState()
     }
@@ -108,7 +111,6 @@ class Anime {
 
     setCurrentEpisode(numEpisode) {
         this._curentEpisode = numEpisode;
-        Anime.deleteFavori(this);
         Anime.addFavori(this);
 
     }
