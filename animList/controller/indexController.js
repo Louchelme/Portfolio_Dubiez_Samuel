@@ -23,6 +23,7 @@ const view = {
 
 //initialisation ---
 let api = new API();
+Anime.restoreState();
 
 /**
  * Chargement des top animes

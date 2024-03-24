@@ -61,7 +61,9 @@ const view = {
 
 //initialisation ---
 let api = new API();
+Anime.restoreState();
 let anime;
+
 
 //récupération de l'identifiant de l'animé dans l'url
 let params = new URL(document.location).searchParams;
@@ -76,7 +78,6 @@ let addFavori = 'Ajouter au favoris';
  * Envoie de la requéte api et affichage du résultat
  */
 api.searchAnimeById(id).then(async (response) => {
-
 	//traitement de la réponse api
 	let recherche = await response.json();
 	let data = JSON.parse(recherche.contents).data;

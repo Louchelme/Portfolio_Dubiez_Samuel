@@ -116,8 +116,10 @@ class Anime {
     static addFavori(anime){
         if (Anime.favoris[anime.getId()]){
             Anime.deleteFavori(anime);
+            console.log('passage dans delete ');
         }
         Anime.favoris[anime.getId()] = anime;
+        console.log(Anime.favoris);
         Anime.saveState()
     }
 
