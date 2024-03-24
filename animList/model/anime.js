@@ -88,12 +88,18 @@ class Anime {
 
         //init _dicoAired
         let to = '';
+        let from = '';
         if(animData.aired.to == null ){
             to = 'non finie';
         } else {
             to = animData.aired.to.substr(0,10) ?? 'pas encore finie';
         }
-        this._dicoAired = {'from':animData.aired.from.substr(0,10), 'to' :to};
+        if(animData.aired.from == null ){
+            from = 'non commancé';
+        } else {
+            from = animData.aired.from.substr(0,10) ?? 'pas encore finie';
+        }
+        this._dicoAired = {'from':from, 'to' :to};
       } 
 
     static getFavoris(){
