@@ -54,92 +54,120 @@ const view = {
 	//synopsis
 	animeSysnopsis: document.querySelector('#synopsis'),
 
+	//btn favori
+	favori: document.querySelector('#favori'),
+
 };
 
-function initPage(){ 
-	//initialisation ---
-	let api = new API();
+//initialisation ---
+let api = new API();
+let anime;
 
-	//récupération de l'identifiant de l'animé dans l'url
-	let params = new URL(document.location).searchParams;
-	let id = params.get("id");
+//récupération de l'identifiant de l'animé dans l'url
+let params = new URL(document.location).searchParams;
+let id = params.get("id");
 
-	/**
-	 * Envoie de la requéte api et affichage du résultat
-	 */
-	api.searchAnimeById(id).then(async (response) => {
+//favori
+let isFavori;
+let delFavori = 'Retirer des favoris';
+let addFavori = 'Ajouter au favoris';
 
-		//traitement de la réponse api
-		let recherche = await response.json();
-		let data = JSON.parse(recherche.contents).data;
+/**
+ * Envoie de la requéte api et affichage du résultat
+ */
+api.searchAnimeById(id).then(async (response) => {
 
-		//conversion en un objet Anime
-		let anime = new Anime(data);
+	//traitement de la réponse api
+	let recherche = await response.json();
+	let data = JSON.parse(recherche.contents).data;
 
-		//placement des informations dans la page
-		view.animeImg.src = anime.getImageURL(); //image
-		view.animeTitles.innerText = anime.getTitle("English"); //title
+	//conversion en un objet Anime
+	anime = new Anime(data);
 
-		//popularity
-		if(anime.getPopularity() == ''){
-			view.animeRank.innerText = 'Score: None';
-		} else {
-			view.animePopularity.innerText = 'Score: ' + anime.getPopularity();
-		}
+	//placement des informations dans la page
+	view.animeImg.src = anime.getImageURL(); //image
+	view.animeTitles.innerText = anime.getTitle("English"); //title
 
-		//rank
-		if(anime.getRank() == ''){
-			view.animeRank.innerText = 'Rank: None';
-		} else {
-			view.animeRank.innerText = 'Rank: ' + anime.getRank();
-		}
+	//popularity
+	if(anime.getPopularity() == ''){
+		view.animeRank.innerText = 'Score: None';
+	} else {
+		view.animePopularity.innerText = 'Score: ' + anime.getPopularity();
+	}
 
-		view.animeType.innerText = anime.getType();//type
-		view.animeRating.innerText = anime.getRating();//rating
+	//rank
+	if(anime.getRank() == ''){
+		view.animeRank.innerText = 'Rank: None';
+	} else {
+		view.animeRank.innerText = 'Rank: ' + anime.getRank();
+	}
 
-		//genres
-		let listGenres = '';
-		let genres = anime.getGenres();
-		for(let id in genres){
-			listGenres += genres[id] + ', ';
-		}
-		view.animeGenres.innerText = listGenres;
+	view.animeType.innerText = anime.getType();//type
+	view.animeRating.innerText = anime.getRating();//rating
 
-		view.animeNbEpisde.innerText = anime.getNumberTotalOfEpisode();//number of episode
-		view.animeDuration.innerText = anime.getDuration();//duration
-		view.animeSortie.innerText = anime.getYear() + ' ' + anime.getSeason();//sortie
-		view.animeStatus.innerText = anime.getStatus();//status
+	//genres
+	let listGenres = '';
+	let genres = anime.getGenres();
+	for(let id in genres){
+		listGenres += genres[id] + ', ';
+	}
+	view.animeGenres.innerText = listGenres;
 
-		view.animeAired.innerText = 'de ' + anime.getAired().from + "\nà " + anime.getAired().to //aired
+	view.animeNbEpisde.innerText = anime.getNumberTotalOfEpisode();//number of episode
+	view.animeDuration.innerText = anime.getDuration();//duration
+	view.animeSortie.innerText = anime.getYear() + ' ' + anime.getSeason();//sortie
+	view.animeStatus.innerText = anime.getStatus();//status
 
-		//studio
-		let listStudio = '';
-		let studios = anime.getStudios();
-		for(let id in studios){
-			listStudio += studios[id] + ', ';
-		}
-		view.animeStudio.innerText = listStudio;
+	view.animeAired.innerText = 'de ' + anime.getAired().from + "\nà " + anime.getAired().to //aired
 
-		//producters
-		let listProducters ='';
-		let producters = anime.getProducers();
-		for(let id in producters){
-			listProducters += producters[id] + ', ';
-		}
-		view.animeProducters.innerText = listProducters;
+	//studio
+	let listStudio = '';
+	let studios = anime.getStudios();
+	for(let id in studios){
+		listStudio += studios[id] + ', ';
+	}
+	view.animeStudio.innerText = listStudio;
 
-		//licensers
-		let listLicesers = '';
-		let licensers = anime.getStudios();
-		for(let id in licensers){
-			listLicesers += licensers[id] + ', ';
-		}
-		view.animeLicensers.innerText = listLicesers;
+	//producters
+	let listProducters ='';
+	let producters = anime.getProducers();
+	for(let id in producters){
+		listProducters += producters[id] + ', ';
+	}
+	view.animeProducters.innerText = listProducters;
 
-		view.animeSysnopsis.innerText = anime.getFullSynopsis();//synopsis
+	//licensers
+	let listLicesers = '';
+	let licensers = anime.getStudios();
+	for(let id in licensers){
+		listLicesers += licensers[id] + ', ';
+	}
+	view.animeLicensers.innerText = listLicesers;
 
-	});
+	view.animeSysnopsis.innerText = anime.getFullSynopsis();//synopsis
+		
+	///initialisation du boutton favori
+	if(Anime.getFavoris()[anime.getId()] == 'undefined'){
+		view.favori.innerText = delFavori;
+		isFavori = true;
+	} else {
+		view.favori.innerText = addFavori;
+		isFavori = false;		
+	}
 
-}
+});
 
-initPage();
+/**
+ * listener boutton favori
+ */
+favori.addEventListener('click', (evt) => {
+	if(isFavori){
+		Anime.deleteFavori(anime)
+		isFavori = false;
+		view.favori.innerText = addFavori;
+	} else {
+		Anime.addFavori(anime);
+		isFavori = true;
+		view.favori.innerText = delFavori;
+	}
+});
