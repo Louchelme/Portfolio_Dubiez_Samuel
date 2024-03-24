@@ -40,7 +40,7 @@ class Anime {
 
     /**
      * Créer une entité Anime a partir des données de l'API envoyé en argument.
-     * @param {*} animData donnée d'un animé sous forme d
+     * @param {*} animData donnée brute d'un animé envoyé par l'api
      */
     constructor(animData) {
         if(animData.mal_id == undefined){
@@ -84,7 +84,6 @@ class Anime {
         }
 
         this._status = animData.status;
-        this._airing = animData.airing;
 
         //init _dicoAired
         let to = '';
@@ -102,10 +101,18 @@ class Anime {
         this._dicoAired = {'from':from, 'to' :to};
       } 
 
+    /**
+     * R'envoie les favoris.
+     * @returns un objet sous la forme d'une liste de {'<id>': <Objet Anime>}
+     */
     static getFavoris(){
         return Anime.favoris;
     }
 
+    /**
+     * Ajout un Anime a la variable static 'favoris'.
+     * @param {*} anime un objet Anime
+     */
     static addFavori(anime){
         if (Anime.favoris[anime.getId()]){
             Anime.deleteFavori(anime);
@@ -114,44 +121,73 @@ class Anime {
         Anime.saveState()
     }
 
+    /**
+     * Supprime l'objet Anime correspondant de la variable static 'favoris'.
+     * @param {*} anime un objet Anime
+     */
     static deleteFavori(anime){
         delete Anime.favoris[anime.getId()];
         Anime.saveState()
     }
 
+    /**
+     * R'envoie le numéro d'épisode en cours de visionage de la série.
+     * @returns une String
+     */
     getCurrentEpisode() {
         return this._curentEpisode ?? 0;
     }
 
+    /**
+     * Change le numéro de l'épisode.
+     * @param {*} numEpisode un String
+     */
     setCurrentEpisode(numEpisode) {
         this._curentEpisode = numEpisode;
         Anime.addFavori(this);
 
     }
 
+    /**
+     * R'envoie le titre par défaut.
+     * @returns un String
+     */
     getDefaultTitle(){
         return this._dicoTitles[0].title;
     }
 
+    /**
+     * R'envoie l'identifiant de la série.
+     * @returns un String
+     */
     getId(){
         return this._id;
     }
 
     /**
-     * 
+     * R'nevoie le titre de la langue spécifié ou le titre par défaut si il y en a pas.
      * @param {*} langue la langue écrit en format 'French'
+     * @returns un String
      */
     getTitle(langue){
         for(var key in this._dicoTitles){
             if(this._dicoTitles[key].type == langue) return this._dicoTitles[key].title;
         }
-        return this._dicoTitles[0].title;
+        return this.getDefaultTitle();
     }
 
+    /**
+     * R'envoie l'URL de l'image de présentation de la série.
+     * @returns un String
+     */
     getImageURL(){
         return this._imageUrl;
     }
 
+    /**
+     * R'envoie les 200 1er caractéres du synopsis suivit de '[...]'.
+     * @returns un String
+     */
     getShortSynopsis(){
         if (!this._synopsis) {
             return '';
@@ -162,74 +198,137 @@ class Anime {
         return this._synopsis.slice(0, 50*4) + ' [...]' ?? '';
     }
 
+    /**
+     * R'envoie le synopsis en entier.
+     * @returns un String
+     */
     getFullSynopsis(){
         return this._synopsis ?? '';
     }
 
+    /**
+     * R'envoie le nombre d'épisode de la série.
+     * @returns un String
+     */
     getNumberTotalOfEpisode(){
         return this._totalEpisode ?? 0;
     }
 
+    /**
+     * R'envoie le support de la série (TV, anime, manga, ...).
+     * @returns un String
+     */
     getType(){
         return this._type ?? '';
     }
 
+    /**
+     * R'envoie la durée moyenne d'un épisode de la série.
+     * @returns un String
+     */
     getDuration(){
         return this._duration ?? '';
     }
 
+    /**
+     * R'envoie le rank de la série.
+     * @returns un String
+     */
     getRank(){
         return this._rank ?? '';
     }
 
+    /**R'envoie l'age minimum pour ragarder la série.
+     * 
+     * @returns un String
+     */
     getRating(){
         return this._rating ?? 'unknow';
     }
 
+    /**
+     * R'envoie la popularité de la série
+     * @returns un String
+     */
     getPopularity(){
         return this._popularity ?? 'unknow';
     }
 
+    /**
+     * R'envoie l'année de sortie de la série.
+     * @returns un String
+     */
     getYear(){
         return this._year ?? 'unknow';
     }
 
+    /**
+     * R'envoie la saison de sortie de la série.
+     * @returns un String
+     */
     getSeason(){
         return this._season ?? 'unknow';
     }
 
+    /**
+     * R'envoie la liste des genres de la série.
+     * @returns un tableau de String : [String]
+     */
     getGenres(){
         return this._tabGenres ?? ['unknow'];
     }
 
+    /**
+     * R'envoie la liste des genres explicites de la série.
+     * @returns un tableau de String : [String]
+     */
     getExpliciteGenres(){
         return this._tabExplicitGenres ?? [];
     }
 
+    /**
+     * R'envoie la liste des studios de la série.
+     * @returns un tableau de String : [String]
+     */
     getStudios(){
         return this._tabStudios ?? ['unknow'];
     }
 
+    /**
+     * R'envoie la liste des producteurs de la série.
+     * @returns un tableau de String : [String]
+     */
     getProducers(){
         return this._tabProducers ?? ['unknow'];
     }
     
+    /**
+     * R'envoie la liste des licenciers de la série.
+     * @returns un tableau de String : [String]
+     */
     getLicensors(){
         return this._tabLicensors ?? ['unknow'];
     }
 
+    /**
+     * R'envoie le status de sortie de la série.
+     * @returns un String
+     */
     getStatus(){
         return this._status ?? '';
     }
 
-    getAiring(){
-        return this._airing ?? '';
-    }
-
+    /**
+     * R'envoie la dates de début de sortie et de fin de sortie sous format 'aaaa-mm-jj'.
+     * @returns un objet {'from': String, 'to': String}
+     */
     getAired(){
         return this._dicoAired ?? {};
     }
 
+    /**
+     * Sauvegarde la variable 'favoris' dans le localStorage.
+     */
     static saveState(){
         //conversion des favoris en json
         var state = JSON.stringify(Anime.favoris);
@@ -237,6 +336,9 @@ class Anime {
         localStorage.setItem("favoris", state);
     }
 
+    /**
+     * set la variable 'favoris' avec le contenue du localStorage.
+     */
     static restoreState(){
         //récupération des favoris du local storage
         let state = localStorage.getItem("favoris");

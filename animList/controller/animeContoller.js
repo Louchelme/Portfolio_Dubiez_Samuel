@@ -64,9 +64,9 @@ let api = new API();
 let params = new URL(document.location).searchParams;
 let id = params.get("id");
 
-console.log('id : '+id);
-
-//evoie de la requéte api pour récupérer les informations de l'animé
+/**
+ * Envoie de la requéte api et affichage du résultat
+ */
 api.searchAnimeById(id).then(async (response) => {
 
 	//traitement de la réponse api
