@@ -94,7 +94,7 @@ class Anime {
             to = animData.aired.to.substr(0,10) ?? 'pas encore finie';
         }
         if(animData.aired.from == null ){
-            from = 'non commancé';
+            from = 'non commencé';
         } else {
             from = animData.aired.from.substr(0,10) ?? 'pas encore finie';
         }
