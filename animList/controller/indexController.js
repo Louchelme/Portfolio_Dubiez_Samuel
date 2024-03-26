@@ -92,8 +92,16 @@ view.searchBar.addEventListener("change", async (evt) => {
 					document.location.href = './view/anime.html?id=' + anime.getId();
 				});
 
+
 				let btnAddFav = card.querySelector(".btn-favory");
-				//Remove des favoris
+
+
+				if (Anime.getFavoris()[anime.getId()]) {
+					btnAddFav.remove();
+					return;
+				}
+
+
 				btnAddFav.addEventListener('click', (evt) => {
 					Anime.addFavori(anime);
 					//supression du boutton ajout favoris

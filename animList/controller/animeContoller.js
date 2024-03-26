@@ -148,7 +148,7 @@ api.searchAnimeById(id).then(async (response) => {
 	view.animeSysnopsis.innerText = anime.getFullSynopsis();//synopsis
 		
 	///initialisation du boutton favori
-	if(Anime.getFavoris()[anime.getId()] == 'undefined'){
+	if(Anime.getFavoris()[anime.getId()] != 'undefined'){
 		view.favori.innerText = delFavori;
 		isFavori = true;
 	} else {
